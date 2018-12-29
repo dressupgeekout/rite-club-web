@@ -61,17 +61,18 @@ class PyreMatchDb < Sinatra::Base
     rite = Rite[params[:id].to_i]
     not_found if not rite
 
-    player_a_triumvirate = Triumvirate[rite.player_a_triumvirate_id]
-    player_a_exile_1 = Exile[rite.player_a_exile_1_id]
-    player_a_exile_2 = Exile[rite.player_a_exile_2_id]
-    player_a_exile_3 = Exile[rite.player_a_exile_3_id]
-
     erb(:rite_detail, :layout => :layout_default, :locals => {
       :rite => rite,
-      :player_a_triumvirate => player_a_triumvirate,
-      :player_a_exile_1 => player_a_exile_1,
-      :player_a_exile_2 => player_a_exile_2,
-      :player_a_exile_3 => player_a_exile_3,
+      :player_a => User[rite.player_a_id],
+      :player_b => User[rite.player_b_id],
+      :player_a_triumvirate => Triumvirate[rite.player_a_triumvirate_id],
+      :player_b_triumvirate => Triumvirate[rite.player_b_triumvirate_id],
+      :player_a_exile_1 => Exile[rite.player_a_exile_1_id],
+      :player_a_exile_2 => Exile[rite.player_a_exile_2_id],
+      :player_a_exile_3 => Exile[rite.player_a_exile_3_id],
+      :player_b_exile_1 => Exile[rite.player_b_exile_1_id],
+      :player_b_exile_2 => Exile[rite.player_b_exile_2_id],
+      :player_b_exile_3 => Exile[rite.player_b_exile_3_id],
     })
   end
 
