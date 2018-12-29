@@ -15,12 +15,14 @@ stylesheet_targets=	$(foreach stylesheet,$(STYLESHEETS),$(CSS_DIR)/$(subst .scss
 help:
 	@echo Available targets:
 	@echo - server
-	@echo - migrations
 	@echo - bundle-install
+	@echo - migrations
+	@echo - populate-db
 	@echo - stylesheets
+	@echo - db-console
 
 .PHONY: server
-server: bundle-install migrations $(stylesheet_targets)
+server: bundle-install migrations populate-db $(stylesheet_targets)
 	$(BUNDLE) exec puma
 
 .PHONY: bundle-install
@@ -31,11 +33,19 @@ bundle-install:
 migrations: | $(DB_DIR)
 	$(BUNDLE) exec sequel -E -m ./migrations $(DB_URI)
 
+.PHONY: populate-db
+populate-db:
+	$(BUNDLE) exec ruby ./script/populate_db.rb
+
 .PHONY: stylesheets
 stylesheets:  $(stylesheet_targets)
 
 $(CSS_DIR)/%.css: stylesheets/%.scss | $(CSS_DIR)
 	$(BUNDLE) exec sass $< $@
+
+.PHONY: db-console
+db-console:
+	$(BUNDLE) exec sequel $(DB_URI)
 
 ######### ######### #########
 

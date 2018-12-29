@@ -1,1 +1,19 @@
 <p>hi! <%= Time.now %></p>
+
+<h2>Triumvirates</h2>
+
+<ul>
+  <% triumvirates.each do |triumvirate| %>
+    <li><%= triumvirate.name %></li>
+  <% end%>
+</ul>
+
+
+
+<h2>Exiles</h2>
+
+<ul>
+  <% exiles.each do |exile| %>
+    <li><%= exile.name %></li>
+  <% end%>
+</ul>

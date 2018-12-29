@@ -21,7 +21,7 @@ class PyreMatchDb < Sinatra::Base
 
   helpers do
     def h(str)
-      require Rack::Utils.escape_html(str)
+      return Rack::Utils.escape_html(str)
     end
 
     def json_response!
@@ -35,6 +35,7 @@ class PyreMatchDb < Sinatra::Base
 
   get '/' do
     erb(:index, :layout => :layout_default, :locals => {
+      :exiles => Exile.all,
       :triumvirates => Triumvirate.all,
       :users => User.all,
     })
