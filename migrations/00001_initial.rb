@@ -59,6 +59,14 @@ Sequel.migration do
       Integer :player_a_pyre_health, default: DEFAULT_PYRE_HEALTH
       Integer :player_b_pyre_health, default: DEFAULT_PYRE_HEALTH
       DateTime :timestamp
+      Integer :hosting_player_id, null: false
+      Integer :duration # in seconds
+      Integer :player_a_exile_1_id, null: false
+      Integer :player_a_exile_2_id, null: false
+      Integer :player_a_exile_3_id, null: false
+      Integer :player_b_exile_1_id, null: false
+      Integer :player_b_exile_2_id, null: false
+      Integer :player_b_exile_3_id, null: false
     end
 
     create_table(:matches) do
