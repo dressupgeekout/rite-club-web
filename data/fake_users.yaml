@@ -1,0 +1,15 @@
+---
+-
+  :username: dressupgeekout
+  :realname: Charlotte Koch
+  :location: San Francisco, CA
+  :email: x@example.com
+  :passwd: aaa
+  :salt: xxx
+
+-
+  :username: FailerV1
+  :location: North America
+  :email: y@example.com
+  :passwd: bbb
+  :salt: hhh

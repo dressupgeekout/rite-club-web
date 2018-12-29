@@ -1,0 +1,18 @@
+<h2>All Rites Conducted</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Player A</th>
+      <th>Player B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% rites.each do |rite| %>
+      <tr>
+        <td><%= rite.player_a_id %></td>
+        <td><%= rite.player_b_id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

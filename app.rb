@@ -8,6 +8,7 @@ Dir['models/*.rb'].each { |model| require_relative model }
 Exile.dataset = DB[:exiles]
 InputMethod.dataset = DB[:input_methods]
 Match.dataset = DB[:matches]
+Rite.dataset = DB[:rites]
 Triumvirate.dataset = DB[:triumvirates]
 User.dataset = DB[:users]
 
@@ -35,19 +36,30 @@ class PyreMatchDb < Sinatra::Base
 
   get '/' do
     erb(:index, :layout => :layout_default, :locals => {
-      :exiles => Exile.all,
-      :triumvirates => Triumvirate.all,
-      :users => User.all,
+      :exiles => Exile.all.sort_by { |exile| exile.name },
+      :triumvirates => Triumvirate.all.sort_by { |t| t.name },
+      :users => User.all.sort_by { |u| u.username },
+      :rites => Rite.all.sort_by { |rite| rite.id },
     })
   end
 
-  get '/matches/?' do
+  get '/rites/?' do
+    erb(:rites, :layout => :layout_default, :locals => {
+      :rites => Rite.all.sort_by { |rite| rite.id },
+    })
   end
 
-  post '/matches/?' do
+  post '/rites/?' do
+    # XXX Match.new; Match.save;
   end
 
-  get '/matches/:match_id/?' do
+  get '/rites/:id/?' do
+    rite = Rite[params[:id]]
+    #not_found! if not match
+
+    erb(:rite_deatil, :layout => :layout_default, :locals => {
+      :rite => match,
+    })
   end
 
   get '/api/v1/users/?' do
