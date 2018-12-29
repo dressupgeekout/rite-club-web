@@ -8,6 +8,6 @@ class Triumvirate < Sequel::Model
 
   def validate
     super
-    validates_includes VALID_TRIUMVIRATE_NAMES, :name
+    validates_includes VALID_TRIUMVIRATE_NAMES, :triumvirate_name
   end
 end

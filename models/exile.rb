@@ -8,6 +8,6 @@ class Exile < Sequel::Model
 
   def validate
     super
-    validates_includes VALID_EXILE_NAMES, :name
+    validates_includes VALID_EXILE_NAMES, :exile_name
   end
 end

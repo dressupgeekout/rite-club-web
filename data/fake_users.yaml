@@ -1,15 +1,15 @@
 ---
 -
-  :username: dressupgeekout
-  :realname: Charlotte Koch
-  :location: San Francisco, CA
-  :email: x@example.com
-  :passwd: aaa
-  :salt: xxx
+  :user_username: dressupgeekout
+  :user_realname: Charlotte Koch
+  :user_location: San Francisco, CA
+  :user_email: x@example.com
+  :user_passwd: aaa
+  :user_salt: xxx
 
 -
-  :username: FailerV1
-  :location: North America
-  :email: y@example.com
-  :passwd: bbb
-  :salt: hhh
+  :user_username: FailerV1
+  :user_location: North America
+  :user_email: y@example.com
+  :user_passwd: bbb
+  :user_salt: hhh

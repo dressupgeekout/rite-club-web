@@ -50,15 +50,15 @@ class PyreMatchDb < Sinatra::Base
   end
 
   post '/rites/?' do
-    # XXX Match.new; Match.save;
+    # XXX Rite.new; Rite.save;
   end
 
   get '/rites/:id/?' do
-    rite = Rite[params[:id]]
-    #not_found! if not match
+    rite = Rite[params[:id].to_i]
+    not_found if not rite
 
-    erb(:rite_deatil, :layout => :layout_default, :locals => {
-      :rite => match,
+    erb(:rite_detail, :layout => :layout_default, :locals => {
+      :rite => rite,
     })
   end
 
@@ -68,5 +68,9 @@ class PyreMatchDb < Sinatra::Base
 
   get '/api/v1/triumvirates/?' do
     json_response!
+  end
+
+  not_found do
+    # XXX IMPLEMENTME
   end
 end

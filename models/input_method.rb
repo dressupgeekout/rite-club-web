@@ -8,6 +8,6 @@ class InputMethod < Sequel::Model
 
   def validate
     super
-    validates_includes VALID_INPUT_METHOD_NAMES, :name
+    validates_includes VALID_INPUT_METHOD_NAMES, :input_method_name
   end
 end
