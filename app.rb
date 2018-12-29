@@ -36,10 +36,10 @@ class PyreMatchDb < Sinatra::Base
 
   get '/' do
     erb(:index, :layout => :layout_default, :locals => {
-      :exiles => Exile.all.sort_by { |exile| exile.name },
-      :triumvirates => Triumvirate.all.sort_by { |t| t.name },
-      :users => User.all.sort_by { |u| u.username },
-      :rites => Rite.all.sort_by { |rite| rite.id },
+      :exiles => Exile.all.sort_by { |exile| exile.exile_name },
+      :triumvirates => Triumvirate.all.sort_by { |t| t.triumvirate_name },
+      :users => User.all.sort_by { |u| u.user_username },
+      :rites => Rite.all.sort_by { |rite| rite.rite_timestamp },
     })
   end
 
@@ -53,12 +53,25 @@ class PyreMatchDb < Sinatra::Base
     # XXX Rite.new; Rite.save;
   end
 
+  # XXX should be able to achieve this with joins, shouldn't need to make a
+  # bazillion queries...
+  #
+  # XXX an alternative is to not use a SQL database at all!? O_o
   get '/rites/:id/?' do
     rite = Rite[params[:id].to_i]
     not_found if not rite
 
+    player_a_triumvirate = Triumvirate[rite.player_a_triumvirate_id]
+    player_a_exile_1 = Exile[rite.player_a_exile_1_id]
+    player_a_exile_2 = Exile[rite.player_a_exile_2_id]
+    player_a_exile_3 = Exile[rite.player_a_exile_3_id]
+
     erb(:rite_detail, :layout => :layout_default, :locals => {
       :rite => rite,
+      :player_a_triumvirate => player_a_triumvirate,
+      :player_a_exile_1 => player_a_exile_1,
+      :player_a_exile_2 => player_a_exile_2,
+      :player_a_exile_3 => player_a_exile_3,
     })
   end
 
