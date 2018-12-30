@@ -51,6 +51,34 @@ class RiteClubWeb < Sinatra::Base
       return result
     end
 
+    def get_rite_by_id(id)
+      key = "expanded_rite_#{id.to_s}"
+
+      begin
+        expanded_rite = $cache.get(key)
+      rescue Memcached::NotFound
+        rite = Rite[id]
+        return rite if not rite
+
+        expanded_rite = {
+          :rite => rite,
+          :player_a => User[rite.player_a_id],
+          :player_b => User[rite.player_b_id],
+          :player_a_triumvirate => Triumvirate[rite.player_a_triumvirate_id],
+          :player_b_triumvirate => Triumvirate[rite.player_b_triumvirate_id],
+          :player_a_exile_1 => Exile[rite.player_a_exile_1_id],
+          :player_a_exile_2 => Exile[rite.player_a_exile_2_id],
+          :player_a_exile_3 => Exile[rite.player_a_exile_3_id],
+          :player_b_exile_1 => Exile[rite.player_b_exile_1_id],
+          :player_b_exile_2 => Exile[rite.player_b_exile_2_id],
+          :player_b_exile_3 => Exile[rite.player_b_exile_3_id],
+          :hosting_player => User[rite.rite_hosting_player_id],
+        }
+
+        $cache.set(key, expanded_rite)
+      end
+    end
+
     def img(path)
       return "#{S3_BUCKET}/img/#{path}"
     end
@@ -120,28 +148,14 @@ class RiteClubWeb < Sinatra::Base
     # XXX json_obj out
   end
 
-  # XXX should be able to achieve this with joins, shouldn't need to make a
-  # bazillion queries...
-  #
-  # XXX an alternative is to not use a SQL database at all!? O_o
   get '/rites/:id/?' do
-    rite = Rite[params[:id].to_i]
-    not_found if not rite
+    rite = get_rite_by_id(params[:id].to_i)
 
-    erb(:rite_detail, :layout => :layout_default, :locals => {
-      :rite => rite,
-      :player_a => User[rite.player_a_id],
-      :player_b => User[rite.player_b_id],
-      :player_a_triumvirate => Triumvirate[rite.player_a_triumvirate_id],
-      :player_b_triumvirate => Triumvirate[rite.player_b_triumvirate_id],
-      :player_a_exile_1 => Exile[rite.player_a_exile_1_id],
-      :player_a_exile_2 => Exile[rite.player_a_exile_2_id],
-      :player_a_exile_3 => Exile[rite.player_a_exile_3_id],
-      :player_b_exile_1 => Exile[rite.player_b_exile_1_id],
-      :player_b_exile_2 => Exile[rite.player_b_exile_2_id],
-      :player_b_exile_3 => Exile[rite.player_b_exile_3_id],
-      :hosting_player => User[rite.rite_hosting_player_id],
-    })
+    if rite
+      erb(:rite_detail, :layout => :layout_default, :locals => rite)
+    else
+      not_found
+    end
   end
 
   get '/api/v1/users/?' do
