@@ -11,7 +11,7 @@ Dir.glob("#{models_dir}/*.rb").each { |model| require_relative model }
 [
   [Exile, 'exiles', 'exile_'],
   [InputMethod, 'input_methods', 'input_method_'],
-  [Landmark, 'landmarks', 'landmark_'],
+  [Stage, 'stages', 'stage_'],
   [Triumvirate, 'triumvirates', 'triumvirate_'],
 ].each do |klass, table, column_prefix|
   klass.dataset = DB[table.intern]

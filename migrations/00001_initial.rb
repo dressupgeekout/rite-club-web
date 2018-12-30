@@ -24,9 +24,9 @@ Sequel.migration do
       String :triumvirate_name, text: true, unique: true, null: false
     end
 
-    create_table(:landmarks) do
+    create_table(:stages) do
       primary_key :id
-      String :landmark_name, text: true, unique: true, null: false
+      String :stage_name, text: true, unique: true, null: false
     end
 
     create_table(:exiles) do
@@ -53,7 +53,7 @@ Sequel.migration do
       foreign_key :player_b_triumvirate_id, :triumvirates
       foreign_key :player_a_input_method_id, :input_methods
       foreign_key :player_b_input_method_id, :input_methods
-      foreign_key :landmark_id, :landmarks
+      foreign_key :stage_id, :stages
       TrueClass :rite_talismans_enabled, default: DEFAULT_TALISMANS_ENABLED
       Integer :rite_masteries_allowed, default: DEFAULT_MASTERIES_ALLOWED
       Integer :rite_player_a_pyre_health, default: DEFAULT_PYRE_HEALTH

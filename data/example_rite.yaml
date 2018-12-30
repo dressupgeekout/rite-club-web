@@ -5,7 +5,7 @@
 :player_b_triumvirate_id: 2
 :player_a_input_method_id: 1
 :player_b_input_method_id: 2
-:landmark_id: 1
+:stage_id: 1
 :rite_talismans_enabled: true
 :rite_masteries_allowed: 4
 :rite_player_a_pyre_health: 100

@@ -9,6 +9,7 @@ Exile.dataset = DB[:exiles]
 InputMethod.dataset = DB[:input_methods]
 Match.dataset = DB[:matches]
 Rite.dataset = DB[:rites]
+Stage.dataset = DB[:stages]
 Triumvirate.dataset = DB[:triumvirates]
 User.dataset = DB[:users]
 
