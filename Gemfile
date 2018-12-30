@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+gem "memcached"
 gem "puma"
 gem "sass"
 gem "sequel"

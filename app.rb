@@ -1,9 +1,12 @@
+require 'erb'
 require 'json'
+require 'memcached'
 require 'rack'
 require 'sequel'
 require 'sinatra/base'
 
 DB = Sequel.connect(ENV["DB_URI"])
+$cache = Memcached.new(ENV["MEMCACHED_URI"] || "localhost:11211")
 
 Dir['models/*.rb'].each { |model| require_relative model }
 Exile.dataset = DB[:exiles]
@@ -30,6 +33,19 @@ class PyreMatchDb < Sinatra::Base
     def json_response!
       response["Content-Type"] = "application/json;charset=utf-8"
     end
+
+    def static_get_all(klass)
+      key = "all_#{klass.table_name}"
+
+      begin
+        result = $cache.get(key)
+      rescue Memcached::NotFound
+        result = klass.all.to_a
+        $cache.set(key, result)
+      end
+
+      return result
+    end
   end
 
   before do
@@ -38,8 +54,8 @@ class PyreMatchDb < Sinatra::Base
 
   get '/' do
     erb(:index, :layout => :layout_default, :locals => {
-      :exiles => Exile.all.sort_by { |exile| exile.exile_name },
-      :triumvirates => Triumvirate.all.sort_by { |t| t.triumvirate_name },
+      :exiles => static_get_all(Exile),
+      :triumvirates => static_get_all(Triumvirate),
       :users => User.all.sort_by { |u| u.user_username },
       :rites => Rite.all.sort_by { |rite| rite.rite_timestamp },
     })
