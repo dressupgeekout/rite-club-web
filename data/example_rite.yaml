@@ -10,7 +10,7 @@
 :rite_masteries_allowed: 4
 :rite_player_a_pyre_health: 100
 :rite_player_b_pyre_health: 100
-:hosting_player_id: 1
+:rite_hosting_player_id: 1
 :rite_duration: 60
 :player_a_exile_1_id: 1
 :player_a_exile_2_id: 2

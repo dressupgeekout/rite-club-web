@@ -1,0 +1,43 @@
+{
+  "player_a": {
+    "id": 1,
+    "triumvirate": 1,
+    "input_method": 1,
+    "pyre_health": 100,
+    "host": true,
+    "exiles": [
+      {
+        "id": 1
+      },
+      {
+        "id": 2
+      },
+      {
+        "id": 3
+      }
+    ]
+  },
+  "player_b": {
+    "id": 2,
+    "triumvirate": 2,
+    "input_method": 2,
+    "pyre_health": 100,
+    "host": false,
+    "exiles": [
+      {
+        "id": 4
+      },
+      {
+        "id": 5
+      },
+      {
+        "id": 6
+      }
+    ]
+  },
+  "rite": {
+    "stage": 1,
+    "masteries_allowed": 4,
+    "duration": 60
+  }
+}

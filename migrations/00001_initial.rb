@@ -59,7 +59,7 @@ Sequel.migration do
       Integer :rite_player_a_pyre_health, default: DEFAULT_PYRE_HEALTH
       Integer :rite_player_b_pyre_health, default: DEFAULT_PYRE_HEALTH
       DateTime :rite_timestamp
-      foreign_key :hosting_player_id, :users
+      foreign_key :rite_hosting_player_id, :users
       Integer :rite_duration # in seconds
       foreign_key :player_a_exile_1_id, :exiles
       foreign_key :player_a_exile_2_id, :exiles

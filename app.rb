@@ -1,6 +1,7 @@
-require 'sinatra/base'
-require 'sequel'
+require 'json'
 require 'rack'
+require 'sequel'
+require 'sinatra/base'
 
 DB = Sequel.connect(ENV["DB_URI"])
 
@@ -50,8 +51,47 @@ class PyreMatchDb < Sinatra::Base
     })
   end
 
-  post '/rites/?' do
-    # XXX Rite.new; Rite.save;
+  post '/api/v1/rites/?' do
+    json_response!
+
+    obj = JSON.load(request.body.read)
+
+    playera = obj['player_a']
+    playerb = obj['player_b']
+    rite = obj['rite']
+
+    out_obj = {
+      :player_a_id => playera['id'],
+      :player_b_id => playerb['id'],
+      :player_a_triumvirate_id => playera['triumvirate'],
+      :player_b_triumvirate_id => playerb['triumvirate'],
+      :player_a_input_method_id => playera['input_method'],
+      :player_b_input_method_id => playera['input_method'],
+      :stage_id => rite['stage'],
+      :rite_talismans_enabled => rite['talismans_enabled'],
+      :rite_masteries_allowed => rite['masteries_allowed'],
+      :rite_player_a_pyre_health => playera['pyre_health'],
+      :rite_player_b_pyre_health => playerb['pyre_health'],
+      :rite_timestamp => Time.now, # XXX should be when the rite started
+      :rite_hosting_player_id => playera['host'] ? playera['id'] : playerb['id'],
+      :rite_duration => rite['duration'],
+      :player_a_exile_1_id => playera['exiles'][0]['id'],
+      :player_a_exile_2_id => playera['exiles'][1]['id'],
+      :player_a_exile_3_id => playera['exiles'][2]['id'],
+      :player_b_exile_1_id => playerb['exiles'][0]['id'],
+      :player_b_exile_2_id => playerb['exiles'][1]['id'],
+      :player_b_exile_3_id => playerb['exiles'][2]['id'],
+    }
+
+    rite = Rite.new(out_obj)
+
+    if not rite.valid?
+      # XXX 400
+    end
+
+    rite.save
+    status 201 # XXX Created
+    # XXX json_obj out
   end
 
   # XXX should be able to achieve this with joins, shouldn't need to make a
@@ -74,6 +114,7 @@ class PyreMatchDb < Sinatra::Base
       :player_b_exile_1 => Exile[rite.player_b_exile_1_id],
       :player_b_exile_2 => Exile[rite.player_b_exile_2_id],
       :player_b_exile_3 => Exile[rite.player_b_exile_3_id],
+      :hosting_player => User[rite.rite_hosting_player_id],
     })
   end
 
@@ -82,6 +123,22 @@ class PyreMatchDb < Sinatra::Base
   end
 
   get '/api/v1/triumvirates/?' do
+    json_response!
+  end
+
+  get '/api/v1/stages/?' do
+    json_response!
+  end
+
+  get '/api/v1/exiles/?' do
+    json_response!
+  end
+
+  get '/api/v1/talismans/?' do
+    json_response!
+  end
+
+  get '/api/v1/input_methods/?' do
     json_response!
   end
 
