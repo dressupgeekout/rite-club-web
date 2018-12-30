@@ -50,9 +50,15 @@ class RiteClubWeb
     })
   end
 
+  # The strategy is to get all the "expanded" or "resolved" Rite objects
+  # we're interested in from the cache.
   get '/rites/?' do
+    rites = Rite.select(:id, :rite_timestamp).reverse(:rite_timestamp).limit(25).
+      map { |rite| rite.id }.
+      map { |id| get_rite_by_id(id) }
+
     erb(:rites, :layout => :layout_default, :locals => {
-      :rites => Rite.all.sort_by { |rite| rite.id },
+      :rites => rites,
     })
   end
 

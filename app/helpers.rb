@@ -41,6 +41,7 @@ class RiteClubWeb
         rite = Rite[id]
         return rite if not rite
 
+        # XXX I think I should fully expand/this to plan Hashes
         expanded_rite = {
           :rite => rite,
           :player_a => User[rite.player_a_id],

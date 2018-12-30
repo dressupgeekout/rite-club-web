@@ -1,6 +1,6 @@
 body {
   font-family: "Helvetica", sans-serif;
-  background-color: #fff;
+  background-color: #eee;
   color: #000;
   width: 50em;
   margin: auto;
@@ -26,4 +26,29 @@ nav {
   li:hover {
     background-color: #6ff;
   }
+}
+
+#rites-table {
+  tbody {
+    tr {
+      background-color: #fff;
+    }
+
+    tr:hover {
+      background-color: #ccc;
+    }
+  }
+
+  td {
+    margin: 0em;
+    padding: 1em;
+  }
+
+  a {
+    color: #099;
+  }
+}
+
+.small {
+  font-size: small;
 }

@@ -1,17 +1,29 @@
-<h2>All Rites Conducted</h2>
+<h2>Recent Rites Conducted</h2>
 
-<table>
+<table id="rites-table">
   <thead>
     <tr>
+      <th>Timestamp</th>
       <th>Player A</th>
       <th>Player B</th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
   <tbody>
     <% rites.each do |rite| %>
       <tr>
-        <td><%= rite.player_a_id %></td>
-        <td><%= rite.player_b_id %></td>
+        <td>
+          <%= rite[:rite][:rite_timestamp] %>
+        </td>
+        <td>
+          <%= rite[:player_a][:user_username] %> &mdash; <%= rite[:player_a_triumvirate].triumvirate_name %>
+        </td>
+        <td>
+          <%= rite[:player_b][:user_username] %> &mdash; <%= rite[:player_b_triumvirate].triumvirate_name %>
+        </td>
+        <td class="small">
+          <a href="/rites/<%= rite[:rite][:id] %>">details&hellip;</a>
+        </td>
       </tr>
     <% end %>
   </tbody>
