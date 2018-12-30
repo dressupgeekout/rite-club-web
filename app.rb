@@ -8,6 +8,10 @@ require 'sinatra/base'
 DB = Sequel.connect(ENV["DB_URI"])
 $cache = Memcached.new(ENV["MEMCACHED_URI"] || "localhost:11211")
 
+# If S3_BUCKET is undefined, then use public/img instead:
+S3_BUCKET = ENV["S3_BUCKET_URL"] || "/"
+
+# Database models:
 Dir['models/*.rb'].each { |model| require_relative model }
 Exile.dataset = DB[:exiles]
 InputMethod.dataset = DB[:input_methods]
@@ -17,9 +21,9 @@ Stage.dataset = DB[:stages]
 Triumvirate.dataset = DB[:triumvirates]
 User.dataset = DB[:users]
 
-#########
+######### ######### #########
 
-class PyreMatchDb < Sinatra::Base
+class RiteClubWeb < Sinatra::Base
   configure do
     set :root, __dir__
     enable :sessions
@@ -45,6 +49,10 @@ class PyreMatchDb < Sinatra::Base
       end
 
       return result
+    end
+
+    def img(path)
+      return "#{S3_BUCKET}/img/#{path}"
     end
   end
 
@@ -138,29 +146,35 @@ class PyreMatchDb < Sinatra::Base
 
   get '/api/v1/users/?' do
     json_response!
+    # XXX
   end
 
   get '/api/v1/triumvirates/?' do
     json_response!
+    # XXX
   end
 
   get '/api/v1/stages/?' do
     json_response!
+    # XXX
   end
 
   get '/api/v1/exiles/?' do
     json_response!
+    # XXX
   end
 
   get '/api/v1/talismans/?' do
     json_response!
+    # XXX
   end
 
   get '/api/v1/input_methods/?' do
     json_response!
+    # XXX
   end
 
   not_found do
-    # XXX IMPLEMENTME
+    erb(:not_found, :layout => :layout_default)
   end
 end
