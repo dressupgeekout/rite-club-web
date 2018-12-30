@@ -9,11 +9,28 @@
 </ul>
 
 
-
 <h2>Exiles</h2>
 
 <ul>
   <% exiles.each do |exile| %>
     <li><%= exile.exile_name %></li>
+  <% end%>
+</ul>
+
+
+<h2>Stages</h2>
+
+<ul>
+  <% stages.each do |stage| %>
+    <li><%= stage.stage_name %></li>
+  <% end%>
+</ul>
+
+
+<h2>Input Methods</h2>
+
+<ul>
+  <% input_methods.each do |input_method| %>
+    <li><%= input_method.input_method_name %></li>
   <% end%>
 </ul>

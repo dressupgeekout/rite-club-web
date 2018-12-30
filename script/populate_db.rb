@@ -48,14 +48,4 @@ if ENV["RACK_ENV"] == "development"
       # skip
     end
   end
-
-  Rite.dataset = DB[:rites]
-  example_rite = YAML.load(File.read(File.join(DATA_DIR, "example_rite.yaml")))
-
-  example_rite.merge!({
-    :rite_timestamp => Time.now,
-  })
-
-  r = Rite.new(example_rite)
-  r.save
 end

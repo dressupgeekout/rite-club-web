@@ -56,8 +56,10 @@ class PyreMatchDb < Sinatra::Base
     erb(:index, :layout => :layout_default, :locals => {
       :exiles => static_get_all(Exile),
       :triumvirates => static_get_all(Triumvirate),
+      :stages => static_get_all(Stage),
       :users => User.all.sort_by { |u| u.user_username },
       :rites => Rite.all.sort_by { |rite| rite.rite_timestamp },
+      :input_methods => static_get_all(InputMethod),
     })
   end
 
