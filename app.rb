@@ -24,6 +24,8 @@ User.dataset = DB[:users]
 ######### ######### #########
 
 class RiteClubWeb < Sinatra::Base
+  JSON_CONTENT_TYPE = "application/json;charset=utf-8"
+
   configure do
     set :root, __dir__
     enable :sessions
@@ -35,7 +37,16 @@ class RiteClubWeb < Sinatra::Base
     end
 
     def json_response!
-      response["Content-Type"] = "application/json;charset=utf-8"
+      response["Content-Type"] = JSON_CONTENT_TYPE
+    end
+
+    def json_response?
+      return response["Content-Type"] == JSON_CONTENT_TYPE
+    end
+
+    def render_json_response(obj)
+      response.write(JSON.dump(obj) + "\n")
+      return response
     end
 
     def static_get_all(klass)
@@ -105,6 +116,16 @@ class RiteClubWeb < Sinatra::Base
     })
   end
 
+  get '/rites/:id/?' do
+    rite = get_rite_by_id(params[:id].to_i)
+
+    if rite
+      erb(:rite_detail, :layout => :layout_default, :locals => rite)
+    else
+      not_found
+    end
+  end
+
   post '/api/v1/rites/?' do
     json_response!
 
@@ -148,47 +169,24 @@ class RiteClubWeb < Sinatra::Base
     # XXX json_obj out
   end
 
-  get '/rites/:id/?' do
-    rite = get_rite_by_id(params[:id].to_i)
-
-    if rite
-      erb(:rite_detail, :layout => :layout_default, :locals => rite)
+  get '/api/v1/:table/:id/?' do
+    json_response!
+    table = params[:table].intern
+    id = params[:id].to_i
+    return json_not_found if !DB.tables.include?(table)
+    obj = DB[table].where(:id => id).to_a.first
+    if obj
+      return render_json_response(obj)
     else
       not_found
     end
   end
 
-  get '/api/v1/users/?' do
-    json_response!
-    # XXX
-  end
-
-  get '/api/v1/triumvirates/?' do
-    json_response!
-    # XXX
-  end
-
-  get '/api/v1/stages/?' do
-    json_response!
-    # XXX
-  end
-
-  get '/api/v1/exiles/?' do
-    json_response!
-    # XXX
-  end
-
-  get '/api/v1/talismans/?' do
-    json_response!
-    # XXX
-  end
-
-  get '/api/v1/input_methods/?' do
-    json_response!
-    # XXX
-  end
-
   not_found do
-    erb(:not_found, :layout => :layout_default)
+    if json_response?
+      render_json_response({"status" => "Not Found",})
+    else
+      erb(:not_found, :layout => :layout_default)
+    end
   end
 end
