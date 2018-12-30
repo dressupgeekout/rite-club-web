@@ -10,3 +10,20 @@ footer {
   font-size: small;
   padding: 3em 0em 0em 0em;
 }
+
+nav {
+  ul {
+    list-style: none;
+    margin: 0em;
+    padding: 0em;
+  }
+
+  li {
+    background-color: #0ff;
+    display: inline;
+  }
+
+  li:hover {
+    background-color: #6ff;
+  }
+}
