@@ -65,6 +65,8 @@ class RiteClubWeb
   get '/rites/:id/?' do
     rite = get_rite_by_id(params[:id].to_i)
 
+    p rite
+
     if rite
       erb(:rite_detail, :layout => :layout_default, :locals => {
         :rite => rite,

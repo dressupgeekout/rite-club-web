@@ -57,8 +57,10 @@ Sequel.migration do
       foreign_key :stage_id, :stages
       TrueClass :talismans_enabled, default: DEFAULT_TALISMANS_ENABLED
       Integer :masteries_allowed, default: DEFAULT_MASTERIES_ALLOWED
-      Integer :player_a_pyre_health, default: DEFAULT_PYRE_HEALTH
-      Integer :player_b_pyre_health, default: DEFAULT_PYRE_HEALTH
+      Integer :player_a_pyre_start_health, default: DEFAULT_PYRE_HEALTH
+      Integer :player_b_pyre_start_health, default: DEFAULT_PYRE_HEALTH
+      Integer :player_a_pyre_end_health
+      Integer :player_b_pyre_end_health
       DateTime :timestamp
       foreign_key :hosting_player_id, :users
       Integer :duration # in seconds

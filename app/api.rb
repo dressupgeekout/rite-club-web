@@ -18,8 +18,10 @@ class RiteClubWeb
       :stage_id => rite['stage'],
       :talismans_enabled => rite['talismans_enabled'],
       :masteries_allowed => rite['masteries_allowed'],
-      :player_a_pyre_health => playera['pyre_health'],
-      :player_b_pyre_health => playerb['pyre_health'],
+      :player_a_pyre_start_health => playera['pyre_start_health'],
+      :player_b_pyre_start_health => playerb['pyre_start_health'],
+      :player_a_pyre_end_health => playera['pyre_end_health'],
+      :player_b_pyre_end_health => playerb['pyre_end_health'],
       :timestamp => Time.now, # XXX should be when the rite started
       :hosting_player_id => playera['host'] ? playera['id'] : playerb['id'],
       :duration => rite['duration'],
