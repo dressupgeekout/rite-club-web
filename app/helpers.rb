@@ -27,38 +27,46 @@ class RiteClubWeb
       rescue Memcached::NotFound
         result = klass.all.to_a
         $cache.set(key, result)
+      ensure
+        return result
       end
-
-      return result
     end
 
-    def get_rite_by_id(id)
-      key = "expanded_rite_#{id.to_s}"
+    def get_exile_by_character_index(index)
+      key = "exile_charindex_#{index.to_s}"
 
       begin
-        expanded_rite = $cache.get(key)
+        result = $cache.get(key)
       rescue Memcached::NotFound
-        rite = Rite[id]
-        return rite if not rite
-
-        # XXX I think I should fully expand/this to plan Hashes
-        expanded_rite = {
-          :rite => rite,
-          :player_a => User[rite.player_a_id],
-          :player_b => User[rite.player_b_id],
-          :player_a_triumvirate => Triumvirate[rite.player_a_triumvirate_id],
-          :player_b_triumvirate => Triumvirate[rite.player_b_triumvirate_id],
-          :player_a_exile_1 => Exile[rite.player_a_exile_1_id],
-          :player_a_exile_2 => Exile[rite.player_a_exile_2_id],
-          :player_a_exile_3 => Exile[rite.player_a_exile_3_id],
-          :player_b_exile_1 => Exile[rite.player_b_exile_1_id],
-          :player_b_exile_2 => Exile[rite.player_b_exile_2_id],
-          :player_b_exile_3 => Exile[rite.player_b_exile_3_id],
-          :hosting_player => User[rite.rite_hosting_player_id],
-        }
-
-        $cache.set(key, expanded_rite)
+        result = Exile.where(:character_index => index).to_a.first
+      ensure
+        return result
       end
+    end
+
+    # XXX should memcache this
+    def get_rite_by_id(id)
+      rite = Rite[id]
+
+      expanded_rite = {
+        :rite => rite,
+        :player_a => User[rite.player_a_id],
+        :player_b => User[rite.player_b_id],
+        :player_a_triumvirate => Triumvirate[rite.player_a_triumvirate_id],
+        :player_b_triumvirate => Triumvirate[rite.player_b_triumvirate_id],
+        :player_a_exiles => [
+          get_exile_by_character_index(rite.player_a_exile_1_character_index),
+          get_exile_by_character_index(rite.player_a_exile_2_character_index),
+          get_exile_by_character_index(rite.player_a_exile_3_character_index),
+        ],
+        :player_b_exiles => [
+          get_exile_by_character_index(rite.player_b_exile_1_character_index),
+          get_exile_by_character_index(rite.player_b_exile_2_character_index),
+          get_exile_by_character_index(rite.player_b_exile_3_character_index),
+        ],
+        :hosting_player => User[rite.hosting_player_id],
+      }
+      return expanded_rite
     end
 
     def img(path)

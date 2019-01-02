@@ -44,8 +44,8 @@ class RiteClubWeb
       :exiles => static_get_all(Exile),
       :triumvirates => static_get_all(Triumvirate),
       :stages => static_get_all(Stage),
-      :users => User.all.sort_by { |u| u.user_username },
-      :rites => Rite.all.sort_by { |rite| rite.rite_timestamp },
+      :users => User.all.sort_by { |u| u.username },
+      :rites => Rite.all.sort_by { |rite| rite.timestamp },
       :input_methods => static_get_all(InputMethod),
     })
   end
@@ -53,7 +53,7 @@ class RiteClubWeb
   # The strategy is to get all the "expanded" or "resolved" Rite objects
   # we're interested in from the cache.
   get '/rites/?' do
-    rites = Rite.select(:id, :rite_timestamp).reverse(:rite_timestamp).limit(25).
+    rites = Rite.select(:id, :timestamp).reverse(:timestamp).limit(25).
       map { |rite| rite.id }.
       map { |id| get_rite_by_id(id) }
 
@@ -66,7 +66,9 @@ class RiteClubWeb
     rite = get_rite_by_id(params[:id].to_i)
 
     if rite
-      erb(:rite_detail, :layout => :layout_default, :locals => rite)
+      erb(:rite_detail, :layout => :layout_default, :locals => {
+        :rite => rite,
+      })
     else
       not_found
     end

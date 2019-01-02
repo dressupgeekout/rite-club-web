@@ -13,13 +13,13 @@
     <% rites.each do |rite| %>
       <tr>
         <td>
-          <%= rite[:rite][:rite_timestamp] %>
+          <%= rite[:rite][:timestamp] %>
         </td>
         <td>
-          <%= rite[:player_a][:user_username] %> &mdash; <%= rite[:player_a_triumvirate].triumvirate_name %>
+          <%= rite[:player_a][:username] %> &mdash; <%= rite[:player_a_triumvirate].name %>
         </td>
         <td>
-          <%= rite[:player_b][:user_username] %> &mdash; <%= rite[:player_b_triumvirate].triumvirate_name %>
+          <%= rite[:player_b][:username] %> &mdash; <%= rite[:player_b_triumvirate].name %>
         </td>
         <td class="small">
           <a href="/rites/<%= rite[:rite][:id] %>">details&hellip;</a>

@@ -1,11 +1,30 @@
 ---
-- Book of Rites
-- Cairn of Ha'ub
-- Fall of Soliam
-- Glade of Lu
-- Hulk of Ores
-- Isle of Khaylmer
-- Nest of Triesta
-- Pit of Milithe
-- Ridge of Gol
-- Spring of Jomuer
+-
+  :name: Book of Rites
+
+-
+  :name: Cairn of Ha'ub
+
+-
+  :name: Fall of Soliam
+
+-
+  :name: Glade of Lu
+
+-
+  :name: Hulk of Ores
+
+-
+  :name: Isle of Khaylmer
+
+-
+  :name: Nest of Triesta
+
+-
+  :name: Pit of Milithe
+
+-
+  :name: Ridge of Gol
+
+-
+  :name: Spring of Jomuer

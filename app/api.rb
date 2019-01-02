@@ -16,19 +16,19 @@ class RiteClubWeb
       :player_a_input_method_id => playera['input_method'],
       :player_b_input_method_id => playera['input_method'],
       :stage_id => rite['stage'],
-      :rite_talismans_enabled => rite['talismans_enabled'],
-      :rite_masteries_allowed => rite['masteries_allowed'],
-      :rite_player_a_pyre_health => playera['pyre_health'],
-      :rite_player_b_pyre_health => playerb['pyre_health'],
-      :rite_timestamp => Time.now, # XXX should be when the rite started
-      :rite_hosting_player_id => playera['host'] ? playera['id'] : playerb['id'],
-      :rite_duration => rite['duration'],
-      :player_a_exile_1_id => playera['exiles'][0]['id'],
-      :player_a_exile_2_id => playera['exiles'][1]['id'],
-      :player_a_exile_3_id => playera['exiles'][2]['id'],
-      :player_b_exile_1_id => playerb['exiles'][0]['id'],
-      :player_b_exile_2_id => playerb['exiles'][1]['id'],
-      :player_b_exile_3_id => playerb['exiles'][2]['id'],
+      :talismans_enabled => rite['talismans_enabled'],
+      :masteries_allowed => rite['masteries_allowed'],
+      :player_a_pyre_health => playera['pyre_health'],
+      :player_b_pyre_health => playerb['pyre_health'],
+      :timestamp => Time.now, # XXX should be when the rite started
+      :hosting_player_id => playera['host'] ? playera['id'] : playerb['id'],
+      :duration => rite['duration'],
+      :player_a_exile_1_character_index => playera['exiles'][0]['character_index'],
+      :player_a_exile_2_character_index => playera['exiles'][1]['character_index'],
+      :player_a_exile_3_character_index => playera['exiles'][2]['character_index'],
+      :player_b_exile_1_character_index => playerb['exiles'][0]['character_index'],
+      :player_b_exile_2_character_index => playerb['exiles'][1]['character_index'],
+      :player_b_exile_3_character_index => playerb['exiles'][2]['character_index'],
     }
 
     rite = Rite.new(out_obj)
