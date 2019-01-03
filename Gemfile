@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 gem "memcached"
+gem "nokogiri"
 gem "puma"
 gem "sass"
 gem "sequel"
