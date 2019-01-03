@@ -21,6 +21,7 @@ Sequel.migration do
 
     create_table(:triumvirates) do
       primary_key :id
+      Integer :team_index, unique: true, null: false
       String :name, text: true, unique: true, null: false
     end
 
@@ -31,9 +32,9 @@ Sequel.migration do
 
     create_table(:exiles) do
       primary_key :id
+      Integer :character_index, unique: true, null: false
       String :name, text: true, unique: true, null: false
       String :portrait_url, text: true
-      Integer :character_index, unique: true, null: false
     end
 
     create_table(:input_methods) do
@@ -50,8 +51,8 @@ Sequel.migration do
       primary_key :id
       foreign_key :player_a_id, :users
       foreign_key :player_b_id, :users
-      foreign_key :player_a_triumvirate_id, :triumvirates
-      foreign_key :player_b_triumvirate_id, :triumvirates
+      foreign_key :player_a_triumvirate_team_index, :triumvirates, key: :team_index
+      foreign_key :player_b_triumvirate_team_index, :triumvirates, key: :team_index
       foreign_key :player_a_input_method_id, :input_methods
       foreign_key :player_b_input_method_id, :input_methods
       foreign_key :stage_id, :stages
