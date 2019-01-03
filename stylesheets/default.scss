@@ -56,6 +56,15 @@ nav {
 /* *********************** */
 
 #rites-table {
+  thead {
+    tr {
+      th {
+        font-family: "EBGaramond";
+        font-weight: bold;
+      }
+    }
+  }
+
   tbody {
     tr {
       background-color: #fff;
