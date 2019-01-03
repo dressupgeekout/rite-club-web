@@ -44,6 +44,18 @@ class RiteClubWeb
       end
     end
 
+    def get_triumvirate_by_team_index(index)
+      key = "triumvirate_teamindex_#{index.to_s}"
+
+      begin
+        result = $cache.get(key)
+      rescue Memcached::NotFound
+        result = Triumvirate.where(:team_index => index).to_a.first
+      ensure
+        return result
+      end
+    end
+
     # XXX should memcache this
     def get_rite_by_id(id)
       rite = Rite[id]
@@ -52,8 +64,8 @@ class RiteClubWeb
         :rite => rite,
         :player_a => User[rite.player_a_id],
         :player_b => User[rite.player_b_id],
-        :player_a_triumvirate => Triumvirate[rite.player_a_triumvirate_id],
-        :player_b_triumvirate => Triumvirate[rite.player_b_triumvirate_id],
+        :player_a_triumvirate => get_triumvirate_by_team_index(rite.player_a_triumvirate_team_index),
+        :player_b_triumvirate => get_triumvirate_by_team_index(rite.player_b_triumvirate_team_index),
         :player_a_exiles => [
           get_exile_by_character_index(rite.player_a_exile_1_character_index),
           get_exile_by_character_index(rite.player_a_exile_2_character_index),

@@ -11,8 +11,8 @@ class RiteClubWeb
     out_obj = {
       :player_a_id => playera['id'],
       :player_b_id => playerb['id'],
-      :player_a_triumvirate_id => playera['triumvirate'],
-      :player_b_triumvirate_id => playerb['triumvirate'],
+      :player_a_triumvirate_team_index => playera['triumvirate'],
+      :player_b_triumvirate_team_index => playerb['triumvirate'],
       :player_a_input_method_id => playera['input_method'],
       :player_b_input_method_id => playera['input_method'],
       :stage_id => rite['stage'],
