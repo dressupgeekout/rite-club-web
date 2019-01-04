@@ -6,4 +6,8 @@ class User < Sequel::Model
   def validate
     super
   end
+
+  def url
+    return "/users/#{username}"
+  end
 end

@@ -12,4 +12,12 @@ class Stage < Sequel::Model
     super
     validates_includes VALID_NAMES, :name
   end
+
+  def portrait_img
+    # XXX TODO
+  end
+
+  def background_img
+    # XXX TODO
+  end
 end

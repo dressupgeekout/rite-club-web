@@ -12,4 +12,12 @@ class Exile < Sequel::Model
     super
     validates_includes VALID_EXILE_NAMES, :name
   end
+
+  def portrait_img
+    # XXX TODO
+  end
+
+  def portrait_img_small
+    # XXX TODO
+  end
 end

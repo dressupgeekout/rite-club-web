@@ -12,4 +12,8 @@ class InputMethod < Sequel::Model
     super
     validates_includes VALID_INPUT_METHOD_NAMES, :name
   end
+
+  def img
+    # XXX TODO
+  end
 end

@@ -22,7 +22,7 @@ body {
   font-size: 14pt;
   background-color: #eee;
   color: #000;
-  width: 50em;
+  width: 55em;
   margin: auto;
 }
 
@@ -97,4 +97,12 @@ nav {
       font-weight: bold;
     }
   }
+}
+
+#rite-detail-player-a {
+  float: left;
+}
+
+#rite-detail-player-b {
+  float: right;
 }
