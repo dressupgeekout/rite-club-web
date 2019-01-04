@@ -14,11 +14,18 @@ class Triumvirate < Sequel::Model
   end
 
   def sigil_img
-    return "/img/triumvirates/#{name.downcase.gsub(' ', '_')}.png"
+    return "/img/triumvirates/#{self.safe_name}.png"
   end
 
   def sigil_img_small
     #return "/img/triumvirates/#{name.downcase.gsub(' ', '_')}-small.png"
+    # XXX
     return sigil_img
+  end
+
+  # Returns the name of the exile, but without any weird characters unsafe for
+  # filenames.
+  def safe_name
+    return self.name.gsub("'", "").gsub(" ", "")
   end
 end

@@ -44,9 +44,12 @@ class RiteClubWeb
     # XXX json_obj out
   end
 
-  # Returns a collection of usernames and their user IDs. This is intended
-  # to be used by the Rite Club Companion to populate a list of available
-  # players to compete against.
+  # Returns a collection of usernames and their user IDs. This endpoin tis
+  # intended to be used by the Rite Club Companion to populate a list of
+  # available players to compete against.
+  #
+  # XXX in theory we could also provide little avatars next to their names,
+  # too.
   get '/api/v1/usernames/?' do
     json_response!
 

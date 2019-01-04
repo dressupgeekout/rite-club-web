@@ -14,10 +14,15 @@ class Exile < Sequel::Model
   end
 
   def portrait_img
-    # XXX TODO
   end
 
   def portrait_img_small
     # XXX TODO
+  end
+
+  # Returns the name of the exile, but without any weird characters unsafe for
+  # filenames.
+  def safe_name
+    return self.name.gsub("'", "").gsub(" ", "")
   end
 end
