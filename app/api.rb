@@ -44,6 +44,22 @@ class RiteClubWeb
     # XXX json_obj out
   end
 
+  # Returns a collection of usernames and their user IDs. This is intended
+  # to be used by the Rite Club Companion to populate a list of available
+  # players to compete against.
+  get '/api/v1/usernames/?' do
+    json_response!
+
+    obj = User.all.map { |user|
+      {
+        :id => user.id,
+        :username => user.username,
+      }
+    }
+
+    return render_json_response(obj)
+  end
+
   get '/api/v1/:table/:id/?' do
     json_response!
     table = params[:table].intern
