@@ -4,7 +4,7 @@
 
 <ul>
   <% triumvirates.each do |triumvirate| %>
-    <li><%= triumvirate.name %></li>
+    <li><img alt="" src="<%= triumvirate.sigil_img_small %>" width="40"/> <%= triumvirate.name %></li>
   <% end%>
 </ul>
 
@@ -13,7 +13,7 @@
 
 <ul>
   <% exiles.each do |exile| %>
-    <li><%= exile.name %></li>
+    <li><img alt="" src="<%= exile.portrait_img_small %>" width="40"/> <%= exile.name %></li>
   <% end%>
 </ul>
 
