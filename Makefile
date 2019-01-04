@@ -22,8 +22,12 @@ help:
 	@echo - db-console
 
 .PHONY: server
-server: bundle-install migrations populate-db $(stylesheet_targets)
+server: memcached-check bundle-install migrations populate-db $(stylesheet_targets)
 	$(BUNDLE) exec puma
+
+.PHONY: memcached-check
+memcached-check:
+	@pgrep memcached || (echo "error: memcached is not running?" && exit 1)
 
 .PHONY: bundle-install
 bundle-install:
