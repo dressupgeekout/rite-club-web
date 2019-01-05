@@ -26,6 +26,6 @@ class Triumvirate < Sequel::Model
   # Returns the name of the exile, but without any weird characters unsafe for
   # filenames.
   def safe_name
-    return self.name.gsub("'", "").gsub(" ", "")
+    return self.name.downcase.gsub("'", "").gsub(" ", "")
   end
 end

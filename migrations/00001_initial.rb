@@ -28,6 +28,7 @@ Sequel.migration do
     create_table(:stages) do
       primary_key :id
       String :name, text: true, unique: true, null: false
+      String :match_site, text: true, unique: true, null: false
     end
 
     create_table(:exiles) do
@@ -55,7 +56,7 @@ Sequel.migration do
       foreign_key :player_b_triumvirate_team_index, :triumvirates, key: :team_index
       foreign_key :player_a_input_method_id, :input_methods
       foreign_key :player_b_input_method_id, :input_methods
-      foreign_key :stage_id, :stages
+      foreign_key :stage_match_site, :stages, key: :match_site
       TrueClass :talismans_enabled, default: DEFAULT_TALISMANS_ENABLED
       Integer :masteries_allowed, default: DEFAULT_MASTERIES_ALLOWED
       Integer :player_a_pyre_start_health, default: DEFAULT_PYRE_HEALTH
