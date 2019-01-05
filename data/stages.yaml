@@ -1,21 +1,21 @@
 ---
-- :match_site: A
+- :match_site: 1
   :name: Book of Rites
-- :match_site: B
+- :match_site: 2
   :name: Ridge of Gol
-- :match_site: C
+- :match_site: 3
   :name: Spring of Jomuer
-- :match_site: D
+- :match_site: 4
   :name: Cairn of Ha'ub
-- :match_site: E
+- :match_site: 5
   :name: Pit of Milithe
-- :match_site: F
+- :match_site: 6
   :name: Hulk of Ores
-- :match_site: G
+- :match_site: 7
   :name: Nest of Triesta
-- :match_site: H
+- :match_site: 8
   :name: Glade of Lu
-- :match_site: I
+- :match_site: 9
   :name: Fall of Soliam
-- :match_site: J
+- :match_site: 10
   :name: Isle of Khaylmer

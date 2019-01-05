@@ -9,6 +9,15 @@ export DB_URI=		sqlite://$(DB_DIR)/$(RACK_ENV).sqlite3
 STYLESHEETS=	# defined
 STYLESHEETS+=	default.scss
 
+MODELS=		# defined
+MODELS+=	exile
+MODELS+=	input_method
+MODELS+=	match
+MODELS+=	rite
+MODELS+=	stage
+MODELS+=	triumvirate
+MODELS+=	user
+
 stylesheet_targets=	$(foreach stylesheet,$(STYLESHEETS),$(CSS_DIR)/$(subst .scss,.css,$(stylesheet)))
 
 .PHONY: help
@@ -49,7 +58,7 @@ $(CSS_DIR)/%.css: stylesheets/%.scss | $(CSS_DIR)
 
 .PHONY: db-console
 db-console:
-	$(BUNDLE) exec sequel $(DB_URI)
+	$(BUNDLE) exec sequel $(foreach model,$(MODELS),-r./models/$(model).rb) $(DB_URI)
 
 ######### ######### #########
 

@@ -28,7 +28,9 @@ Sequel.migration do
     create_table(:stages) do
       primary_key :id
       String :name, text: true, unique: true, null: false
-      String :match_site, text: true, unique: true, null: false
+
+      # The numeric equivalent of "MatchSiteA", "MatchSiteB", etc.
+      Integer :match_site, unique: true, null: false
     end
 
     create_table(:exiles) do

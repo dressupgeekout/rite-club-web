@@ -56,7 +56,19 @@ class RiteClubWeb
       end
     end
 
-    # XXX should memcache this
+    def get_stage_by_match_site(index)
+      key = "stage_matchsite_#{index}"
+
+      begin
+        result = $cache.get(key)
+      rescue Memcached::NotFound
+        result = Stage.where(:match_site => index).to_a.first
+      ensure
+        return result
+      end
+    end
+
+    # XXX Should memcache this, but it causes problems somehow
     def get_rite_by_id(id)
       rite = Rite[id]
 
@@ -77,7 +89,9 @@ class RiteClubWeb
           get_exile_by_character_index(rite.player_b_exile_3_character_index),
         ],
         :hosting_player => User[rite.hosting_player_id],
+        :stage => get_stage_by_match_site(rite.stage_match_site),
       }
+
       return expanded_rite
     end
 

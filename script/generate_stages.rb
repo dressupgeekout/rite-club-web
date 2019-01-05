@@ -9,10 +9,10 @@ doc = Nokogiri::XML(File.read(File.expand_path(HELPTEXT_EN_XML_PATH)))
 
 ary = []
 
-%w[A B C D E F G H I J].each { |x|
+%w[A B C D E F G H I J].each_with_index { |x, i|
   e = doc.xpath(sprintf('//HelpText/Text[@Id="MatchSite%s"]', x)).first
   h = {
-    :match_site => x,
+    :match_site => (i+1), # Ensure A=>1, not A=>0
     :name => e.get_attribute("DisplayName"),
   }
   ary.push(h)
