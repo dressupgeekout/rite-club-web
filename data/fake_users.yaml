@@ -13,3 +13,10 @@
   :email: y@example.com
   :passwd: bbb
   :salt: hhh
+
+-
+  :username: doomhammer
+  :location: North America
+  :email: z@example.com
+  :passwd: ccc
+  :salt: iii
