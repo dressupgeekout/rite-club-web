@@ -15,7 +15,7 @@ class RiteClubWeb
       :player_b_triumvirate_team_index => playerb['triumvirate'],
       :player_a_input_method_id => playera['input_method'],
       :player_b_input_method_id => playera['input_method'],
-      :stage_id => rite['stage'],
+      :stage_match_site => rite['stage'],
       :talismans_enabled => rite['talismans_enabled'],
       :masteries_allowed => rite['masteries_allowed'],
       :player_a_pyre_start_health => playera['pyre_start_health'],
