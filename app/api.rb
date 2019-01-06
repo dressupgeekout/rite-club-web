@@ -31,6 +31,7 @@ class RiteClubWeb
       :player_b_exile_1_character_index => playerb['exiles'][0]['character_index'],
       :player_b_exile_2_character_index => playerb['exiles'][1]['character_index'],
       :player_b_exile_3_character_index => playerb['exiles'][2]['character_index'],
+      :label => rite['label'],
     }
 
     rite = Rite.new(out_obj)

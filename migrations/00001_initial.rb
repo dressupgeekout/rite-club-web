@@ -4,6 +4,7 @@ DEFAULT_MASTERIES_ALLOWED = 4
 DEFAULT_PYRE_HEALTH = 100
 DEFAULT_TALISMANS_ENABLED = true
 DEFAULT_PARSEC_HOST = false
+DEFAULT_RITE_LABEL = "casual".freeze
 
 Sequel.migration do
   change do
@@ -74,6 +75,7 @@ Sequel.migration do
       foreign_key :player_b_exile_1_character_index, :exiles, key: :character_index
       foreign_key :player_b_exile_2_character_index, :exiles, key: :character_index
       foreign_key :player_b_exile_3_character_index, :exiles, key: :character_index
+      String :label, text: true, unique: false, null: true, default: DEFAULT_RITE_LABEL
     end
 
     create_table(:matches) do

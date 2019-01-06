@@ -90,6 +90,7 @@ class RiteClubWeb
         ],
         :hosting_player => User[rite.hosting_player_id],
         :stage => get_stage_by_match_site(rite.stage_match_site),
+        :label => rite.label,
       }
 
       return expanded_rite
