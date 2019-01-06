@@ -36,7 +36,7 @@ help:
 	@echo - db-console
 
 .PHONY: server
-server: memcached-check bundle-install migrations populate-db $(stylesheet_targets)
+server: bundle-install migrations populate-db $(stylesheet_targets)
 	$(BEXEC) $(PUMA)
 
 .PHONY: memcached-check

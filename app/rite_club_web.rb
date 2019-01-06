@@ -1,14 +1,35 @@
 require 'erb'
 require 'json'
-require 'memcached'
 require 'rack'
 require 'sequel'
 require 'sinatra/base'
 
-HERE = File.expand_path(__dir__)
+begin
+  $memcached_loaded = false
+  require 'memcached'
+  $memcached_loaded = true
+rescue LoadError
+  # OK
+end
 
+$memcached_loaded = false if ENV["NO_MEMCACHED"]
+
+# Dummy class which pretends to be an interface to Memcached but in fact is
+# not.
+class FakeCache
+  def initialize(*args, **kwargs); end;
+  def get(*args, **kwargs); raise Memcached::NotFound; end;
+  def set(*args, **kwargs); end;
+end
+
+if $memcached_loaded
+  $cache = Memcached.new(ENV["MEMCACHED_URI"] || "localhost:11211")
+else
+  $cache = FakeCache.new
+end
+
+HERE = File.expand_path(__dir__)
 DB = Sequel.connect(ENV["DB_URI"])
-$cache = Memcached.new(ENV["MEMCACHED_URI"] || "localhost:11211")
 
 # If S3_BUCKET is undefined, then use public/img instead:
 S3_BUCKET = ENV["S3_BUCKET_URL"] || "/"
