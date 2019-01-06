@@ -1,0 +1,7 @@
+<h2>Rites labelled "<%= label %>"</h2>
+
+<ul>
+  <% rites.each do |rite| %>
+    <li><a href="<%= rite.url %>">Rite <%= rite.id %></a></li>
+  <% end %>
+</ul>

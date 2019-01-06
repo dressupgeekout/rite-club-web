@@ -1,0 +1,7 @@
+<h2>All labels</h2>
+
+<ul>
+  <% labels.each do |label| %>
+    <li><a href="/rites/labels/<%= label %>"><%= h(label) %></a></li>
+  <% end %>
+</ul>

@@ -23,6 +23,10 @@ class Rite < Sequel::Model
     end
   end
 
+  def url
+    return "/rites/#{self.id}"
+  end
+
   # Returns `:player_a` or `:player_b`.
   def winner
     return self.player_a_pyre_end_health <= 0 ? :player_b : :player_a

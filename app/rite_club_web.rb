@@ -83,6 +83,23 @@ class RiteClubWeb
     })
   end
 
+  get '/rites/labels/?' do
+    labels = Rite.select(:label).all.map { |r| r.label }.sort.uniq
+
+    erb(:labels, :layout => :layout_default, :locals => {
+      :labels => labels,
+    })
+  end
+
+  get '/rites/labels/:label/?' do
+    rites = Rite.where(:label => params[:label]).all
+
+    erb(:label_detail, :layout => :layout_default, :locals => {
+      :rites => rites,
+      :label => params[:label],
+    })
+  end
+
   get '/rites/:id/?' do
     rite = get_rite_by_id(params[:id].to_i)
 
