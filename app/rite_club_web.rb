@@ -87,6 +87,7 @@ class RiteClubWeb
     erb(:user_detail, :layout => :layout_default, :locals => {
       :user => user,
       :relevant_rites => relevant_rites,
+      :n_rites_conducted => relevant_rites.length,
     })
   end
 
