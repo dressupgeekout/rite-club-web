@@ -1,6 +1,8 @@
 BUNDLE?=	bundle
 BEXEC?=		$(BUNDLE) exec
+SEQUEL?=	sequel
 RUBY?=		ruby
+SASS?=		sass
 
 DB_DIR=		db
 CSS_DIR=	$(CURDIR)/public/css
@@ -38,7 +40,7 @@ server: memcached-check bundle-install migrations populate-db $(stylesheet_targe
 
 .PHONY: memcached-check
 memcached-check:
-	@pgrep memcached || (echo "error: memcached is not running?" && exit 1)
+	@pgrep memcached >/dev/null 2>&1 || (echo "error: memcached is not running?" && exit 1)
 
 .PHONY: bundle-install
 bundle-install:
@@ -48,7 +50,7 @@ endif
 
 .PHONY: migrations
 migrations: | $(DB_DIR)
-	$(BEXEC) sequel -E -m ./migrations $(DB_URI)
+	$(BEXEC) $(SEQUEL) -E -m ./migrations $(DB_URI)
 
 .PHONY: populate-db
 populate-db:
@@ -58,11 +60,11 @@ populate-db:
 stylesheets:  $(stylesheet_targets)
 
 $(CSS_DIR)/%.css: stylesheets/%.scss | $(CSS_DIR)
-	$(BEXEC) sass $< $@
+	$(BEXEC) $(SASS) $< $@
 
 .PHONY: db-console
 db-console:
-	$(BEXEC) sequel $(foreach model,$(MODELS),-r./models/$(model).rb) $(DB_URI)
+	$(BEXEC) $(SEQUEL) $(foreach model,$(MODELS),-r./models/$(model).rb) $(DB_URI)
 
 ######### ######### #########
 
