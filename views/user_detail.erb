@@ -1,0 +1,16 @@
+<h2><%= user.username %></h2>
+
+<dl>
+  <dt>LOCATION</dt>
+  <dd><%= user.location %><dd>
+</dl>
+
+<h2>Rites conducted by <%= user.username %></h2>
+
+<ul>
+  <% relevant_rites.each do |rite| %>
+    <li>
+      <a href="/rites/<%= rite.id %>"><%= rite.id %> &mdash; <%= rite.label %></a>
+    </li>
+  <% end %>
+</ul>

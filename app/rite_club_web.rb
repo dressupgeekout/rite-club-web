@@ -74,6 +74,22 @@ class RiteClubWeb
     end
   end
 
+  get '/users/?' do
+    erb(:users, :layout => :layout_default, :locals => {
+      :users => User.all,
+    })
+  end
+
+  get '/users/:username/?' do
+    user = User.where(:username => params[:username]).to_a.first
+    relevant_rites = Rite.where(Sequel.or(:player_a_id => user.id, :player_b_id => user.id,)).to_a
+
+    erb(:user_detail, :layout => :layout_default, :locals => {
+      :user => user,
+      :relevant_rites => relevant_rites,
+    })
+  end
+
   not_found do
     if json_response?
       render_json_response({"status" => "Not Found",})
