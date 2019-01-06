@@ -1,8 +1,9 @@
 BUNDLE?=	bundle
 BEXEC?=		$(BUNDLE) exec
-SEQUEL?=	sequel
+PUMA?=		puma
 RUBY?=		ruby
 SASS?=		sass
+SEQUEL?=	sequel
 
 DB_DIR=		db
 CSS_DIR=	$(CURDIR)/public/css
@@ -36,7 +37,7 @@ help:
 
 .PHONY: server
 server: memcached-check bundle-install migrations populate-db $(stylesheet_targets)
-	$(BEXEC) puma
+	$(BEXEC) $(PUMA)
 
 .PHONY: memcached-check
 memcached-check:
