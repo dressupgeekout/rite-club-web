@@ -21,6 +21,10 @@ class Triumvirate < Sequel::Model
     return "/img/triumvirates/#{self.safe_name}-small.png"
   end
 
+  def sigil_img_medium
+    return "/img/triumvirates/#{self.safe_name}-medium.png"
+  end
+
   # Returns the name of the exile, but without any weird characters unsafe for
   # filenames.
   def safe_name
