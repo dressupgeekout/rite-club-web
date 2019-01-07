@@ -1,84 +1,63 @@
 ---
--
-  :name: Almer
+- :name: Almer
   :character_index: 13
 
--
-  :name: Barker
+- :name: Barker
   :character_index: 12
 
--
-  :name: Bertrude
+- :name: Bertrude
   :character_index: 9
 
--
-  :name: Dalbert
+- :name: Dalbert
   :character_index: 14
 
--
-  :name: Hedwyn
+- :name: Hedwyn
   :character_index: 1
 
--
-  :name: Ignarius
+- :name: Ignarius
   :character_index: 11
 
--
-  :name: Jodariel
+- :name: Jodariel
   :character_index: 2
 
--
-  :name: Lendel
+- :name: Lendel
   :character_index: 10
 
--
-  :name: Mae
+- :name: Mae
   :character_index: 4
 
--
-  :name: Manley
+- :name: Manley
   :character_index: 17
 
--
-  :name: Messenger-Imp
+- :name: Messenger-Imp
   :character_index: 20
 
--
-  :name: Oralech
+- :name: Oralech
   :character_index: 19
 
--
-  :name: Pamitha
+- :name: Pamitha
   :character_index: 7
 
--
-  :name: Rukey
+- :name: Rukey
   :character_index: 3
 
--
-  :name: Sandra
+- :name: Sandra
   :character_index: 18
 
--
-  :name: Sir Deluge
+- :name: Sir Deluge
   :character_index: 15
 
--
-  :name: Sir Gilman
+- :name: Sir Gilman
   :character_index: 6
 
--
-  :name: Tamitha
+- :name: Tamitha
   :character_index: 16
 
--
-  :name: Ti'zo
+- :name: Ti'zo
   :character_index: 5
 
--
-  :name: Udmildhe
+- :name: Udmildhe
   :character_index: 21
 
--
-  :name: Volfred
+- :name: Volfred
   :character_index: 8
