@@ -54,4 +54,11 @@ class Rite < Sequel::Model
       "/audio/cheers/cheer_#{exile.safe_name}_#{triumvirate.safe_name}.ogg"
     }
   end
+
+  def pretty_duration
+    sec = self.duration.dup
+    m = sec / 60
+    sec -= (m*60)
+    return sprintf("%d:%02d", m, sec)
+  end
 end
