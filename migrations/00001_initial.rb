@@ -18,6 +18,7 @@ Sequel.migration do
       String :passwd, text: true, null: false
       String :salt, text: true, null: false
       TrueClass :parsec_host, default: DEFAULT_PARSEC_HOST
+      String :biography, text: true, unique: false, null: true
     end
 
     create_table(:triumvirates) do
