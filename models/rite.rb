@@ -51,7 +51,7 @@ class Rite < Sequel::Model
     triumvirate = Triumvirate.where(:team_index => triumvirate_index).first
 
     return exiles.map { |exile|
-      "/audio/cheers/cheer_#{exile.safe_name}_#{triumvirate.safe_name}.ogg"
+      "/audio/cheers/cheer_#{exile.safe_name}_#{triumvirate.safe_name}.mp3"
     }
   end
 

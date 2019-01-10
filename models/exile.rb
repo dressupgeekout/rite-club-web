@@ -21,8 +21,9 @@ class Exile < Sequel::Model
   end
 
   # Returns the name of the exile, but without any weird characters unsafe for
-  # filenames.
+  # filenames. Apostrophes and spaces are simply stripped, and all
+  # characters are sent lowercase.
   def safe_name
-    return self.name.gsub("'", "").gsub(" ", "")
+    return self.name.downcase.gsub("'", "").gsub(" ", "")
   end
 end

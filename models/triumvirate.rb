@@ -25,8 +25,9 @@ class Triumvirate < Sequel::Model
     return "/img/triumvirates/#{self.safe_name}-medium.png"
   end
 
-  # Returns the name of the exile, but without any weird characters unsafe for
-  # filenames.
+  # Returns the name of the triumvirate, but without any weird characters
+  # unsafe for filenames. Apostrophes and spaces are simply stripped, and
+  # all characters are sent lowercase.
   def safe_name
     return self.name.downcase.gsub("'", "").gsub(" ", "")
   end
