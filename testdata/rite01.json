@@ -38,6 +38,7 @@
     ]
   },
   "rite": {
+    "label": "AUTOMATICALLY-GENERATED",
     "stage": 1,
     "masteries_allowed": 4,
     "duration": 60
