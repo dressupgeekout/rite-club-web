@@ -1,7 +1,5 @@
 require 'sequel'
 
-DEFAULT_MASTERIES_ALLOWED = 4
-DEFAULT_PYRE_HEALTH = 100
 DEFAULT_PARSEC_HOST = false
 DEFAULT_RITE_LABEL = "casual".freeze
 
@@ -61,9 +59,9 @@ Sequel.migration do
       foreign_key :player_b_input_method_id, :input_methods
       foreign_key :stage_match_site, :stages, key: :match_site
       TrueClass :talismans_enabled
-      Integer :masteries_allowed, default: DEFAULT_MASTERIES_ALLOWED
-      Integer :player_a_pyre_start_health, default: DEFAULT_PYRE_HEALTH
-      Integer :player_b_pyre_start_health, default: DEFAULT_PYRE_HEALTH
+      Integer :masteries_allowed
+      Integer :player_a_pyre_start_health
+      Integer :player_b_pyre_start_health
       Integer :player_a_pyre_end_health
       Integer :player_b_pyre_end_health
       DateTime :timestamp
