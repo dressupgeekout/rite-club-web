@@ -6,6 +6,8 @@
   <dt>LABEL</dt> <dd><a href="/rites/labels/<%= rite[:label] %>"><%= rite[:label] %></a></dd>
   <dt>STAGE</dt> <dd><%= rite[:stage].name %></dd>
   <dt>DURATION</dt> <dd><%= rite[:rite].pretty_duration %></dd>
+  <dt>MASTERIES ALLOWED</dt> <dd><%= rite[:rite].masteries_allowed %></dd>
+  <dt>TALISMANS ENABLED</dt> <dd><%= rite[:rite].talismans_enabled.to_s %></dd>
 </dl>
 
 <div id="rite-detail-player-a">
