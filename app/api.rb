@@ -1,37 +1,29 @@
 class RiteClubWeb
   post '/api/v1/rites/?' do
-    json_response!
-
-    obj = JSON.load(request.body.read)
-
-    playera = obj['player_a']
-    playerb = obj['player_b']
-    rite = obj['rite']
-
     out_obj = {
-      :player_a_id => playera['id'],
-      :player_b_id => playerb['id'],
-      :player_a_triumvirate_team_index => playera['triumvirate'],
-      :player_b_triumvirate_team_index => playerb['triumvirate'],
-      :player_a_input_method_id => playera['input_method'],
-      :player_b_input_method_id => playera['input_method'],
-      :stage_match_site => rite['stage'],
-      :talismans_enabled => rite['talismans_enabled'],
-      :masteries_allowed => rite['masteries_allowed'],
-      :player_a_pyre_start_health => playera['pyre_start_health'],
-      :player_b_pyre_start_health => playerb['pyre_start_health'],
-      :player_a_pyre_end_health => playera['pyre_end_health'],
-      :player_b_pyre_end_health => playerb['pyre_end_health'],
+      :player_a_id => params['player_a.id'].to_i,
+      :player_b_id => params['player_b.id'].to_i,
+      :player_a_triumvirate_team_index => params['player_a.triumvirate'].to_i,
+      :player_b_triumvirate_team_index => params['player_b.triumvirate'].to_i,
+      :player_a_input_method_id => params['player_a.input_method'].to_i,
+      :player_b_input_method_id => params['player_b.input_method'].to_i,
+      :stage_match_site => params['rite.stage'].to_i,
+      :talismans_enabled => params['rite.talismans_enabled'].downcase == "true",
+      :masteries_allowed => params['rite.masteries_allowed'].to_i,
+      :player_a_pyre_start_health => params['player_a.pyre_start_health'].to_i,
+      :player_b_pyre_start_health => params['player_b.pyre_start_health'].to_i,
+      :player_a_pyre_end_health => params['player_a.pyre_end_health'].to_i,
+      :player_b_pyre_end_health => params['player_b.pyre_end_health'].to_i,
       :timestamp => Time.now, # XXX should be when the rite started
-      :hosting_player_id => playera['host'] ? playera['id'] : playerb['id'],
-      :duration => rite['duration'],
-      :player_a_exile_1_character_index => playera['exiles'][0]['character_index'],
-      :player_a_exile_2_character_index => playera['exiles'][1]['character_index'],
-      :player_a_exile_3_character_index => playera['exiles'][2]['character_index'],
-      :player_b_exile_1_character_index => playerb['exiles'][0]['character_index'],
-      :player_b_exile_2_character_index => playerb['exiles'][1]['character_index'],
-      :player_b_exile_3_character_index => playerb['exiles'][2]['character_index'],
-      :label => rite['label'],
+      :hosting_player_id => params['player_a.host'].downcase == "true" ? params['player_a.id'].to_i : params['player_b.id'].to_i,
+      :duration => params['rite.duration'].to_i,
+      :player_a_exile_1_character_index => params['player_a.exiles.0.character_index'].to_i,
+      :player_a_exile_2_character_index => params['player_a.exiles.1.character_index'].to_i,
+      :player_a_exile_3_character_index => params['player_a.exiles.2.character_index'].to_i,
+      :player_b_exile_1_character_index => params['player_b.exiles.0.character_index'].to_i,
+      :player_b_exile_2_character_index => params['player_b.exiles.1.character_index'].to_i,
+      :player_b_exile_3_character_index => params['player_b.exiles.2.character_index'].to_i,
+      :label => params['rite.label'],
     }
 
     rite = Rite.new(out_obj)
@@ -42,7 +34,6 @@ class RiteClubWeb
 
     rite.save
     status 201 # XXX Created
-    # XXX json_obj out
   end
 
   # Returns a collection of usernames and their user IDs. This endpoin tis
