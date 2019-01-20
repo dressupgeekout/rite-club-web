@@ -38,7 +38,6 @@ S3_BUCKET = ENV["S3_BUCKET_URL"] || "/"
 Dir["#{HERE}/../models/*.rb"].each { |model| require_relative model }
 Exile.dataset = DB[:exiles]
 InputMethod.dataset = DB[:input_methods]
-Match.dataset = DB[:matches]
 Rite.dataset = DB[:rites]
 Stage.dataset = DB[:stages]
 Triumvirate.dataset = DB[:triumvirates]

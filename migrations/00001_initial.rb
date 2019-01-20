@@ -75,9 +75,5 @@ Sequel.migration do
       foreign_key :player_b_exile_3_character_index, :exiles, key: :character_index
       String :label, text: true, unique: false, null: true, default: DEFAULT_RITE_LABEL
     end
-
-    create_table(:matches) do
-      primary_key :id
-    end
   end
 end
