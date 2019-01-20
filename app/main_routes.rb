@@ -1,6 +1,11 @@
 class RiteClubWeb
   get '/' do
     erb(:index, :layout => :layout_default, :locals => {
+    })
+  end
+
+  get '/debug/?' do
+    erb(:debug, :layout => :layout_default, :locals => {
       :exiles => static_get_all(Exile),
       :triumvirates => static_get_all(Triumvirate),
       :stages => static_get_all(Stage),
