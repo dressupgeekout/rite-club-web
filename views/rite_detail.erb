@@ -3,9 +3,9 @@
 <div id="rite-detail">
 
 <dl>
-  <dt>LABEL</dt> <dd><a href="/rites/labels/<%= rite[:label] %>"><%= rite[:label] %></a></dd>
+  <dt><i class="fas fa-tag"></i> LABEL</dt> <dd><a href="/rites/labels/<%= rite[:label] %>"><%= rite[:label] %></a></dd>
   <dt>STAGE</dt> <dd><%= rite[:stage].name %></dd>
-  <dt>DURATION</dt> <dd><%= rite[:rite].pretty_duration %></dd>
+  <dt><i class="fas fa-hourglass-half"></i> DURATION</dt> <dd><%= rite[:rite].pretty_duration %></dd>
   <dt>MASTERIES ALLOWED</dt> <dd><%= rite[:rite].masteries_allowed %></dd>
   <dt>TALISMANS ENABLED</dt> <dd><%= rite[:rite].talismans_enabled.to_s %></dd>
 </dl>
@@ -13,24 +13,24 @@
 <div id="rite-detail-player-a">
   <img alt="" src="<%= rite[:player_a_triumvirate].sigil_img_medium %>"/>
   <dl>
-    <dt>PLAYER A</dt> <dd><a href="<%= rite[:player_a].url %>"><%= rite[:player_a].username %></a></dd>
+    <dt><i class="fas fa-user"></i> PLAYER A</dt> <dd><a href="<%= rite[:player_a].url %>"><%= rite[:player_a].username %></a></dd>
     <dt>TRIUMVIRATE</dt> <dd><%= rite[:player_a_triumvirate].name %></dd>
     <dt>EXILE 1</dt> <dd><%= rite[:player_a_exiles][0].name %></dd>
     <dt>EXILE 2</dt> <dd><%= rite[:player_a_exiles][1].name %></dd>
     <dt>EXILE 3</dt> <dd><%= rite[:player_a_exiles][2].name %></dd>
-    <dt>PYRE HEALTH</dt> <dd><%= rite[:rite].player_a_pyre_end_health %>/<%= rite[:rite].player_a_pyre_start_health %></dd>
+    <dt><i class="fas fa-fire"></i> PYRE HEALTH</dt> <dd><%= rite[:rite].player_a_pyre_end_health %>/<%= rite[:rite].player_a_pyre_start_health %></dd>
   </dl>
 </div>
 
 <div id="rite-detail-player-b">
   <img alt="" src="<%= rite[:player_b_triumvirate].sigil_img_medium %>"/>
   <dl>
-    <dt>PLAYER B</dt> <dd><a href="<%= rite[:player_b].url %>"><%= rite[:player_b].username %></a></dd>
+    <dt><i class="fas fa-user"></i> PLAYER B</dt> <dd><a href="<%= rite[:player_b].url %>"><%= rite[:player_b].username %></a></dd>
     <dt>TRIUMVIRATE</dt> <dd><%= rite[:player_b_triumvirate].name %></dd>
     <dt>EXILE 1</dt> <dd><%= rite[:player_b_exiles][0].name %></dd>
     <dt>EXILE 2</dt> <dd><%= rite[:player_b_exiles][1].name %></dd>
     <dt>EXILE 3</dt> <dd><%= rite[:player_b_exiles][2].name %></dd>
-    <dt>PYRE HEALTH</dt> <dd><%= rite[:rite].player_b_pyre_end_health %>/<%= rite[:rite].player_b_pyre_start_health %></dd>
+    <dt><i class="fas fa-fire"></i> PYRE HEALTH</dt> <dd><%= rite[:rite].player_b_pyre_end_health %>/<%= rite[:rite].player_b_pyre_start_health %></dd>
   </dl>
 </div>
 
