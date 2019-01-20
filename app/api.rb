@@ -14,7 +14,7 @@ class RiteClubWeb
       :player_b_pyre_start_health => params['player_b.pyre_start_health'].to_i,
       :player_a_pyre_end_health => params['player_a.pyre_end_health'].to_i,
       :player_b_pyre_end_health => params['player_b.pyre_end_health'].to_i,
-      :timestamp => Time.now, # XXX should be when the rite started
+      :timestamp => params['rite.timestamp'].to_i,
       :hosting_player_id => params['player_a.host'].downcase == "true" ? params['player_a.id'].to_i : params['player_b.id'].to_i,
       :duration => params['rite.duration'].to_i,
       :player_a_exile_1_character_index => params['player_a.exiles.0.character_index'].to_i,

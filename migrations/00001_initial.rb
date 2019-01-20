@@ -64,7 +64,7 @@ Sequel.migration do
       Integer :player_b_pyre_start_health
       Integer :player_a_pyre_end_health
       Integer :player_b_pyre_end_health
-      DateTime :timestamp
+      Integer :timestamp # in Unix time
       foreign_key :hosting_player_id, :users
       Integer :duration # in seconds
       foreign_key :player_a_exile_1_character_index, :exiles, key: :character_index
