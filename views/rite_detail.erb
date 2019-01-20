@@ -2,13 +2,26 @@
 
 <div id="rite-detail">
 
-<dl>
-  <dt><i class="fas fa-tag"></i> LABEL</dt> <dd><a href="/rites/labels/<%= rite[:label] %>"><%= rite[:label] %></a></dd>
-  <dt>STAGE</dt> <dd><%= rite[:stage].name %></dd>
-  <dt><i class="fas fa-hourglass-half"></i> DURATION</dt> <dd><%= rite[:rite].pretty_duration %></dd>
-  <dt>MASTERIES ALLOWED</dt> <dd><%= rite[:rite].masteries_allowed %></dd>
-  <dt>TALISMANS ENABLED</dt> <dd><%= rite[:rite].talismans_enabled.to_s %></dd>
-</dl>
+<div id="rite-general-details">
+  <dl>
+    <dt><i class="fas fa-tag"></i> LABEL</dt> <dd><a href="/rites/labels/<%= rite[:label] %>"><%= rite[:label] %></a></dd>
+    <dt>STAGE</dt> <dd><%= rite[:stage].name %></dd>
+    <dt><i class="fas fa-hourglass-half"></i> DURATION</dt> <dd><%= rite[:rite].pretty_duration %></dd>
+
+    <dt>MASTERIES ALLOWED</dt>
+      <% if rite[:rite].masteries_allowed == -1 %>
+        <dd><i>(defaults)</i></dd>
+      <% else %>
+        <dd><%= rite[:rite].masteries_allowed %></dd>
+      <% end  %>
+
+    <% if rite[:rite].talismans_enabled %>
+      <dt>TALISMANS ENABLED</dt> <dd>&nbsp;</dd>
+    <% else %>
+      <dt>TALISMANS DISABLED</dt> <dd>&nbsp;</dd>
+    <% end %>
+  </dl>
+</div>
 
 <div id="rite-detail-player-a">
   <img alt="" src="<%= rite[:player_a_triumvirate].sigil_img_medium %>"/>
