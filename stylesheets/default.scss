@@ -15,6 +15,15 @@
   font-size: small;
 }
 
+.book-font {
+  font-family: "EBGaramond", serif;
+  font-weight: bold;
+}
+
+.rite-detail-triumvirate-name {
+  font-size: 125%;
+}
+
 /* *********************** */
 
 body {
@@ -129,6 +138,9 @@ header {
       font-weight: bold;
     }
   }
+
+  width: 75%;
+  margin: auto;
 }
 
 #rite-detail-player-a {

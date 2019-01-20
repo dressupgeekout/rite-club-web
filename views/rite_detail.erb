@@ -24,10 +24,10 @@
 </div>
 
 <div id="rite-detail-player-a">
-  <img alt="" src="<%= rite[:player_a_triumvirate].sigil_img_medium %>"/>
+  <img alt="" src="<%= rite[:player_a_triumvirate].sigil_img_medium %>"/> <br/>
+  <span class="book-font rite-detail-triumvirate-name"><%= rite[:player_a_triumvirate].name %></span>
   <dl>
     <dt><i class="fas fa-user"></i> PLAYER A</dt> <dd><a href="<%= rite[:player_a].url %>"><%= rite[:player_a].username %></a></dd>
-    <dt>TRIUMVIRATE</dt> <dd><%= rite[:player_a_triumvirate].name %></dd>
     <dt>EXILE 1</dt> <dd><%= rite[:player_a_exiles][0].name %></dd>
     <dt>EXILE 2</dt> <dd><%= rite[:player_a_exiles][1].name %></dd>
     <dt>EXILE 3</dt> <dd><%= rite[:player_a_exiles][2].name %></dd>
@@ -36,10 +36,10 @@
 </div>
 
 <div id="rite-detail-player-b">
-  <img alt="" src="<%= rite[:player_b_triumvirate].sigil_img_medium %>"/>
+  <img alt="" src="<%= rite[:player_b_triumvirate].sigil_img_medium %>"/> <br/>
+  <span class="book-font rite-detail-triumvirate-name"><%= rite[:player_b_triumvirate].name %></span>
   <dl>
     <dt><i class="fas fa-user"></i> PLAYER B</dt> <dd><a href="<%= rite[:player_b].url %>"><%= rite[:player_b].username %></a></dd>
-    <dt>TRIUMVIRATE</dt> <dd><%= rite[:player_b_triumvirate].name %></dd>
     <dt>EXILE 1</dt> <dd><%= rite[:player_b_exiles][0].name %></dd>
     <dt>EXILE 2</dt> <dd><%= rite[:player_b_exiles][1].name %></dd>
     <dt>EXILE 3</dt> <dd><%= rite[:player_b_exiles][2].name %></dd>
@@ -55,7 +55,7 @@
 
 <!-- XXX I've totally forgotten how to do audio, too, apparently -->
 <% rite[:rite].cheer_sounds.each_with_index do |uri, i| %>
-  <audio id="cheer-exile-<%= i %>" controls>
+  <audio id="cheer-exile-<%= i %>">
     <source src="<%= uri %>"/>
   </audio>
 <% end %>
