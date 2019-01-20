@@ -61,4 +61,8 @@ class Rite < Sequel::Model
     sec -= (m*60)
     return sprintf("%d:%02d", m, sec)
   end
+
+  def pretty_timestamp
+    return Time.at(self.timestamp).strftime("%B %d, %Y %H:%m:%S")
+  end
 end

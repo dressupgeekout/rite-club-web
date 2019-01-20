@@ -13,7 +13,7 @@
     <% rites.each do |rite| %>
       <tr>
         <td>
-          <%= rite[:rite][:timestamp] %>
+          <%= rite[:rite].pretty_timestamp %>
         </td>
         <td class="rites-table-single-player-entry">
           <img alt="" src="<%= rite[:player_a_triumvirate].sigil_img_small %>" width="50">
