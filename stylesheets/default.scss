@@ -36,20 +36,51 @@ footer {
   padding: 3em 0em 0em 0em;
 }
 
-nav {
-  ul {
-    list-style: none;
+$rite_club_link_color_ordinary: #000;
+$rite_club_link_color_ordinary_highlight: #333;
+
+a {
+  color: $rite_club_link_color_ordinary;
+}
+
+a:visited {
+  color: $rite_club_link_color_ordinary;
+}
+
+a:hover {
+  color: $rite_club_link_color_ordinary_highlight;
+}
+
+/* *********************** */
+
+header {
+  hgroup {
+    background-color: #fff;
+    padding: 1em;
     margin: 0em;
+  }
+
+  h1, h2, h3 {
     padding: 0em;
+    margin: 0em;
   }
 
-  li {
-    background-color: #0ff;
-    display: inline;
-  }
-
-  li:hover {
-    background-color: #6ff;
+  nav {
+    ul {
+      list-style: none;
+      margin: 0em;
+      padding: 0em;
+    }
+  
+    li {
+      background-color: #0ff;
+      display: inline;
+      margin: 0em 3em 0em 0em;
+    }
+  
+    li:hover {
+      background-color: #6ff;
+    }
   }
 }
 
