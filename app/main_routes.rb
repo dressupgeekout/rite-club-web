@@ -65,11 +65,15 @@ class RiteClubWeb
   get '/users/:username/?' do
     user = User.where(:username => params[:username]).to_a.first
     relevant_rites = Rite.where(Sequel.or(:player_a_id => user.id, :player_b_id => user.id,)).to_a
+    n_rites_won = get_rites_won_by(user.id).length
+    n_rites_lost = get_rites_lost_by(user.id).length
 
     erb(:user_detail, :layout => :layout_default, :locals => {
       :user => user,
       :relevant_rites => relevant_rites,
       :n_rites_conducted => relevant_rites.length,
+      :n_rites_won => n_rites_won,
+      :n_rites_lost => n_rites_lost,
     })
   end
 

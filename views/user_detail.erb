@@ -7,6 +7,11 @@
 
 <h2><%= n_rites_conducted %> rite<%= n_rites_conducted == 1 ? "" : "s" %> conducted by <%= user.username %></h2>
 
+<dl>
+  <dt>Rites won</dt> <dd><%= n_rites_won %></dd>
+  <dt>Rites lost</dt> <dd><%= n_rites_lost %></dd>
+</dl>
+
 <ul>
   <% relevant_rites.each do |rite| %>
     <li>

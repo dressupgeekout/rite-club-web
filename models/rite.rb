@@ -37,6 +37,16 @@ class Rite < Sequel::Model
     return winner == :player_a ? :player_b : :player_a
   end
 
+  # Returns the ID of the player who is the winner.
+  def winner_id
+    return self.send("#{winner}_id".intern)
+  end
+
+  # Returns the ID of the player who is the loser.
+  def loser_id
+    return self.send("#{loser}_id".intern)
+  end
+
   # Returns an array.
   def cheer_sounds
     exile_indexes = []

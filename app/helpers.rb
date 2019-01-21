@@ -21,7 +21,6 @@ class RiteClubWeb
 
     def static_get_all(klass)
       key = "all_#{klass.table_name}"
-
       begin
         result = $cache.get(key)
       rescue Memcached::NotFound
@@ -34,7 +33,6 @@ class RiteClubWeb
 
     def get_exile_by_character_index(index)
       key = "exile_charindex_#{index.to_s}"
-
       begin
         result = $cache.get(key)
       rescue Memcached::NotFound
@@ -46,7 +44,6 @@ class RiteClubWeb
 
     def get_triumvirate_by_team_index(index)
       key = "triumvirate_teamindex_#{index.to_s}"
-
       begin
         result = $cache.get(key)
       rescue Memcached::NotFound
@@ -58,7 +55,6 @@ class RiteClubWeb
 
     def get_stage_by_match_site(index)
       key = "stage_matchsite_#{index}"
-
       begin
         result = $cache.get(key)
       rescue Memcached::NotFound
@@ -94,6 +90,14 @@ class RiteClubWeb
       }
 
       return expanded_rite
+    end
+
+    def get_rites_won_by(player_id)
+      return Rite.all.select { |r| r.winner_id == player_id }
+    end
+
+    def get_rites_lost_by(player_id)
+      return Rite.all.select { |r| r.loser_id == player_id }
     end
 
     def img(path)
