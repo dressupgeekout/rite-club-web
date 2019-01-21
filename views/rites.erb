@@ -18,7 +18,7 @@
         <td class="rites-table-single-player-entry">
           <div align="center">
             <img alt="" src="<%= rite[:player_a_triumvirate].sigil_img_small %>" width="50"> <br/>
-            <% if rite[:rite].winner == :player_a %><i class="fas fa-check"></i><% end %>
+            <% if rite[:rite].winner == :player_a %><i class="fas fa-trophy"></i><% end %>
             <%= rite[:player_a_triumvirate].name %> <br/>
             <a href="/users/<%= rite[:player_a][:username] %>"><%= rite[:player_a][:username] %></a> 
           </div>
@@ -27,7 +27,7 @@
         <td class="rites-table-single-player-entry">
           <div align="center">
             <img alt="" src="<%= rite[:player_b_triumvirate].sigil_img_small %>" width="50"> <br/>
-            <% if rite[:rite].winner == :player_b %><i class="fas fa-check"></i><% end %>
+            <% if rite[:rite].winner == :player_b %><i class="fas fa-trophy"></i><% end %>
             <%= rite[:player_b_triumvirate].name %> <br/>
             <a href="/users/<%= rite[:player_b][:username] %>"><%= rite[:player_b][:username] %></a>
           </div>

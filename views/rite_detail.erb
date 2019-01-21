@@ -26,7 +26,10 @@
 <div id="rite-detail-player-a">
   <div class="rite-detail-triumvirate-pres">
     <img alt="" src="<%= rite[:player_a_triumvirate].sigil_img_medium %>"/>
-    <span class="book-font rite-detail-triumvirate-name"><%= rite[:player_a_triumvirate].name %></span>
+    <span class="book-font rite-detail-triumvirate-name">
+      <% if rite[:rite].winner == :player_a %><i class="fa fa-trophy"></i> <% end %>
+      <%= rite[:player_a_triumvirate].name %>
+    </span>
   </div>
 
   <dl>
@@ -46,7 +49,10 @@
 <div id="rite-detail-player-b">
   <div class="rite-detail-triumvirate-pres">
     <img alt="" src="<%= rite[:player_b_triumvirate].sigil_img_medium %>"/>
-    <span class="book-font rite-detail-triumvirate-name"><%= rite[:player_b_triumvirate].name %></span>
+    <span class="book-font rite-detail-triumvirate-name">
+      <% if rite[:rite].winner == :player_b %><i class="fa fa-trophy"></i> <% end %>
+      <%= rite[:player_b_triumvirate].name %>
+    </span>
   </div>
   <dl>
     <dt><i class="fas fa-user"></i> PLAYER B</dt> <dd><a href="<%= rite[:player_b].url %>"><%= rite[:player_b].username %></a></dd>
