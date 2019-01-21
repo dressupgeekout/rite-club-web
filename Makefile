@@ -17,7 +17,6 @@ STYLESHEETS+=	default.scss
 MODELS=		# defined
 MODELS+=	exile
 MODELS+=	input_method
-MODELS+=	match
 MODELS+=	rite
 MODELS+=	stage
 MODELS+=	triumvirate
