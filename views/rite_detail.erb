@@ -40,7 +40,12 @@
       <dd>
         <ul class="rite-detail-exiles-list">
           <% rite[:player_a_exiles].each do |exile| %>
-            <li><%= exile.name %></li>
+            <li>
+              <div class="rite-detail-exile-pres">
+                <img class="exile-portrait" alt="" src="<%= exile.portrait_img_small %>"/>
+                <%= exile.name %>
+              </div>
+            </li>
           <% end %>
         </ul>
       </dd>
@@ -62,8 +67,13 @@
     <dt>EXILES</dt>
       <dd>
         <ul class="rite-detail-exiles-list">
-          <% rite[:player_a_exiles].each do |exile| %>
-            <li><%= exile.name %></li>
+          <% rite[:player_b_exiles].each do |exile| %>
+            <li>
+              <div class="rite-detail-exile-pres">
+                <img class="exile-portrait" alt="" src="<%= exile.portrait_img_small %>"/>
+                <%= exile.name %>
+              </div>
+            </li>
           <% end %>
         </ul>
       </dd>

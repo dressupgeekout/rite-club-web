@@ -21,7 +21,7 @@
 }
 
 .rite-detail-triumvirate-name {
-  font-size: 150%;
+  font-size: 155%;
 }
 
 .rite-detail-triumvirate-pres {
@@ -33,11 +33,21 @@
   }
 }
 
+.rite-detail-exile-pres {
+  img {
+    display: block;
+    margin: 0em;
+  }
+
+  margin: 0em 0em 1em 0em;
+}
+
 .rite-detail-exiles-list {
   margin: 0em;
   padding: 0em;
 
   li {
+    display: inline;
     list-style: none;
   }
 }
@@ -168,6 +178,10 @@ header {
 
   width: 75%;
   margin: auto;
+
+  .exile-portrait {
+    height: 70px;
+  }
 }
 
 #rite-detail-player-a {

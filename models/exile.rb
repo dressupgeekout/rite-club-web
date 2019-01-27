@@ -14,11 +14,11 @@ class Exile < Sequel::Model
   end
 
   def portrait_img
-    # XXX TODO
+    return "#{ENV['S3_BUCKET_URL']}/img/exiles/#{self.safe_name}.png"
   end
 
   def portrait_img_small
-    # XXX TODO
+    return "#{ENV['S3_BUCKET_URL']}/img/exiles/#{self.safe_name}-small.png"
   end
 
   # Returns the name of the exile, but without any weird characters unsafe for
