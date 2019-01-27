@@ -97,17 +97,23 @@ header {
   }
 
   nav {
-    margin: 1em 0em 0em 0em;
+    margin: 0em;
+    padding: 0em;
 
     ul {
       list-style: none;
-      margin: 0em;
+      margin: 1em 0em 0em 0em;
       padding: 0em;
     }
   
     li {
       display: inline;
-      margin: 0em 3em 0em 0em;
+      margin: 0em;
+      padding: 1em;
+    }
+
+    li:hover {
+      background-color: #fff;
     }
   }
 }
