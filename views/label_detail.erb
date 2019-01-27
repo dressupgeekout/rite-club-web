@@ -2,6 +2,6 @@
 
 <ul>
   <% rites.each do |rite| %>
-    <li><a href="<%= rite.url %>">Rite <%= rite.id %></a></li>
+    <li><a href="<%= rite.url %>">Rite #<%= rite.id %> &mdash; <%= rite.summary %></a></li>
   <% end %>
 </ul>
