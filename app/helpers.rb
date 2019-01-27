@@ -104,8 +104,18 @@ class RiteClubWeb
       return "#{ENV['S3_BUCKET_URL']}/img/#{path}"
     end
 
+    def companion_app(os)
+      os_map = {
+        "windows" => ".zip",
+        "macos" => ".tar.gz",
+        "linux" => ".tar.gz",
+      }
+      return "#{ENV['S3_BUCKET_URL']}/app/rite_club_companion-#{most_recent_companion_app_version}-#{os}#{os_map[os]}"
+    end
+
+    # XXX IMPLEMENTME
     def most_recent_companion_app_version
-      raise NotImplementedError
+      return "0.0.0a"
     end
   end
 end

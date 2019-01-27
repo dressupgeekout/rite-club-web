@@ -1,12 +1,12 @@
 <div id="download-section">
   <h2><i class="fas fa-download"></i> Download</h2>
   
-  <b>Rite Club Companion v0.0.0a</b>
+  <b>Rite Club Companion v<%= most_recent_companion_app_version %></b>
   
   <ul>
-    <li><i class="fab fa-windows"></i> <a href="/">Windows .zip</a></li>
-    <li><i class="fab fa-apple"></i> <a href="/">macOS .tar.gz</a></li>
-    <li><i class="fab fa-linux"></i> <a href="/">Linux .tar.gz</a></li>
+    <li><i class="fab fa-windows"></i> <a href="<%= companion_app("windows") %>">Windows .zip</a></li>
+    <li><i class="fab fa-apple"></i> <a href="<%= companion_app("macos") %>">macOS .tar.gz</a></li>
+    <li><i class="fab fa-linux"></i> <a href="<%= companion_app("linux") %>">Linux .tar.gz</a></li>
   </ul>
 
   <p class="small">
