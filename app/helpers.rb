@@ -117,5 +117,9 @@ class RiteClubWeb
     def most_recent_companion_app_version
       return "0.0.0a"
     end
+
+    def render_article(name)
+      return RDiscount.new(File.read(File.join(settings.root, "articles", "#{name.to_s}.md"))).to_html
+    end
   end
 end

@@ -1,6 +1,7 @@
 require 'erb'
 require 'json'
 require 'rack'
+require 'rdiscount'
 require 'sequel'
 require 'sinatra/base'
 
