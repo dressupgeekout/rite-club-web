@@ -1,11 +1,13 @@
 class RiteClubWeb
   get '/' do
     erb(:index, :layout => :layout_default, :locals => {
+      :title => "Home",
     })
   end
 
   get '/debug/?' do
     erb(:debug, :layout => :layout_default, :locals => {
+      :title => "Debug",
       :exiles => static_get_all(Exile),
       :triumvirates => static_get_all(Triumvirate),
       :stages => static_get_all(Stage),
@@ -23,6 +25,7 @@ class RiteClubWeb
       map { |id| get_rite_by_id(id) }
 
     erb(:rites, :layout => :layout_default, :locals => {
+      :title => "Recent Rites",
       :rites => rites,
     })
   end
@@ -31,6 +34,7 @@ class RiteClubWeb
     labels = Rite.select(:label).all.map { |r| r.label }.sort.uniq
 
     erb(:labels, :layout => :layout_default, :locals => {
+      :title => "Rite Labels",
       :labels => labels,
     })
   end
@@ -39,6 +43,7 @@ class RiteClubWeb
     rites = Rite.where(:label => params[:label]).all
 
     erb(:label_detail, :layout => :layout_default, :locals => {
+      :title => "\"#{params[:label]}\" Rites",
       :rites => rites,
       :label => params[:label],
     })
@@ -49,6 +54,7 @@ class RiteClubWeb
 
     if rite
       erb(:rite_detail, :layout => :layout_default, :locals => {
+        :title => "Rite Detail",
         :rite => rite,
       })
     else
@@ -58,6 +64,7 @@ class RiteClubWeb
 
   get '/users/?' do
     erb(:users, :layout => :layout_default, :locals => {
+      :title => "Readers",
       :users => User.all,
     })
   end
@@ -69,6 +76,7 @@ class RiteClubWeb
     n_rites_lost = get_rites_lost_by(user.id).length
 
     erb(:user_detail, :layout => :layout_default, :locals => {
+      :title => params[:username],
       :user => user,
       :relevant_rites => relevant_rites,
       :n_rites_conducted => relevant_rites.length,
@@ -81,7 +89,9 @@ class RiteClubWeb
     if json_response?
       render_json_response({"status" => "Not Found",})
     else
-      erb(:not_found, :layout => :layout_default)
+      erb(:not_found, :layout => :layout_default, :locals => {
+        :title => "404 Not Found",
+      })
     end
   end
 end
