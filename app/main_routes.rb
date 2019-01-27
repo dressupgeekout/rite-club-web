@@ -65,7 +65,7 @@ class RiteClubWeb
   get '/users/?' do
     erb(:users, :layout => :layout_default, :locals => {
       :title => "Readers",
-      :users => User.all,
+      :users => User.order_by(Sequel.function(:lower, :username)).all,
     })
   end
 

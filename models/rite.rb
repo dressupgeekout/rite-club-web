@@ -75,4 +75,11 @@ class Rite < Sequel::Model
   def pretty_timestamp
     return Time.at(self.timestamp).strftime("%B %d, %Y %H:%m:%S")
   end
+
+  def summary
+    player_a = User.where(:id => self.player_a_id).first
+    player_b = User.where(:id => self.player_b_id).first
+    stage = Stage.where(:match_site => self.stage_match_site).first
+    return sprintf("%s <i>vs</i> %s <i>at</i> %s", player_a.username, player_b.username, stage.name)
+  end
 end
