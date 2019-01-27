@@ -84,14 +84,16 @@ header {
   margin: 0em 0em 2em 0em;
 
   hgroup {
-    background-color: #fff;
     padding: 1em;
     margin: 0em;
+    background-image: url("/img/bg.png");
   }
 
-  h1, h2, h3 {
+  h1 {
     padding: 0em;
     margin: 0em;
+    text-shadow: 2px 2px #eee;
+    font-size: 225%
   }
 
   nav {
