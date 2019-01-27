@@ -101,7 +101,11 @@ class RiteClubWeb
     end
 
     def img(path)
-      return "#{S3_BUCKET}/img/#{path}"
+      return "#{ENV['S3_BUCKET_URL']}/img/#{path}"
+    end
+
+    def most_recent_companion_app_version
+      raise NotImplementedError
     end
   end
 end

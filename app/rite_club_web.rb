@@ -31,9 +31,6 @@ end
 HERE = File.expand_path(__dir__)
 DB = Sequel.connect(ENV["DB_URI"])
 
-# If S3_BUCKET is undefined, then use public/img instead:
-S3_BUCKET = ENV["S3_BUCKET_URL"] || "/"
-
 # Database models:
 Dir["#{HERE}/../models/*.rb"].each { |model| require_relative model }
 Exile.dataset = DB[:exiles]

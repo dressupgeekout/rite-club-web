@@ -14,6 +14,7 @@ class Exile < Sequel::Model
   end
 
   def portrait_img
+    # XXX TODO
   end
 
   def portrait_img_small

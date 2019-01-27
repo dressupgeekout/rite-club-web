@@ -14,15 +14,15 @@ class Triumvirate < Sequel::Model
   end
 
   def sigil_img
-    return "/img/triumvirates/#{self.safe_name}.png"
+    return "#{ENV['S3_BUCKET_URL']}/img/triumvirates/#{self.safe_name}.png"
   end
 
   def sigil_img_small
-    return "/img/triumvirates/#{self.safe_name}-small.png"
+    return "#{ENV['S3_BUCKET_URL']}/img/triumvirates/#{self.safe_name}-small.png"
   end
 
   def sigil_img_medium
-    return "/img/triumvirates/#{self.safe_name}-medium.png"
+    return "#{ENV['S3_BUCKET_URL']}/img/triumvirates/#{self.safe_name}-medium.png"
   end
 
   # Returns the name of the triumvirate, but without any weird characters
