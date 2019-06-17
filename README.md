@@ -31,3 +31,9 @@ The web application respects the following environment variables:
   server will serve these "public" items directly from the `./public`
   folder next to this README. Otherwise, the value you'll probably want to
   set this to is: `https://s3-us-west-2.amazonaws.com/noxalasdotnet/public`.
+
+
+## License
+
+This software is licensed under a 2-clause BSD-style license. Refer to the
+LICENSE.md document for details.
